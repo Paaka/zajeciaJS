@@ -109,11 +109,22 @@ function playSound(key,list,zeroTime){
     console.log(channel1);
 }
 
+function calculateTime(){
+    channel1.map((val, i, arr) =>{
+        console.log(val.time);
+    })
+}
+
+
 function playRecordedAudio(){
+    const xd = calculateTime();
+    console.log(xd);
     channel1.forEach((value,i,arr)=>{
         setTimeout(()=>{
             const val = value.code
-            allSounds[val].sound.play();// controlse dodać xd
+            allSounds[val].sound.currentTime = 0;
+            allSounds[val].sound.play();
+            
         },
         value.time)
     })

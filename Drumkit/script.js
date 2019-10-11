@@ -101,11 +101,15 @@ function playSound(key,list,zeroTime){
     list[key].sound.play();
     let time = Date.now()
     console.log(time, zeroTime);
-    const xd = time - zeroTime;
-    channel1.push({
-        code: key,
-        time: xd, // ==> jeśli klucz jest == zmiennej wystarczy podać sam klucz np. time 
-    })
+    const startTime = time - zeroTime;
+    if(!isNaN(startTime)){
+        channel1.push({
+            code: key,
+            time: startTime, // ==> jeśli klucz jest == zmiennej wystarczy podać sam klucz np. time 
+        })
+    }
+    
+  
     console.log(channel1);
 }
 
@@ -124,7 +128,6 @@ function playRecordedAudio(){
             const val = value.code
             allSounds[val].sound.currentTime = 0;
             allSounds[val].sound.play();
-            
         },
         value.time)
     })

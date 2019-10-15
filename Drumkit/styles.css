@@ -41,6 +41,10 @@ body{
     color:orangered;
 }
 
+.active{
+    background-color: palevioletred;
+}
+
 .heading{
     font-size:3rem;
     background-image: linear-gradient(to bottom, orange, orangered);

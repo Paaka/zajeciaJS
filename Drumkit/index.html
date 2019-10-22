@@ -20,62 +20,65 @@
     <audio src="./sounds/tink.wav" id="tink"></audio>
     <audio src="./sounds/tom.wav" id="tom"></audio>
     <div class="keyboard">
-        <div class="keyboard__item">`</div>
-        <div class="keyboard__item">1</div>
-        <div class="keyboard__item">2</div>
-        <div class="keyboard__item">3</div>
-        <div class="keyboard__item">4</div>
-        <div class="keyboard__item">5</div>
-        <div class="keyboard__item">6</div>
-        <div class="keyboard__item">7</div>
-        <div class="keyboard__item">8</div>
-        <div class="keyboard__item">9</div>
-        <div class="keyboard__item">0</div>
-        <div class="keyboard__item">-</div>
-        <div class="keyboard__item">=</div>
-        <div class="keyboard__item">Backspace</div>
-        <div class="keyboard__item">Tab</div>
-        <div class="keyboard__item">Q</div>
-        <div class="keyboard__item">W</div>
-        <div class="keyboard__item">E</div>
-        <div class="keyboard__item">R</div>
-        <div class="keyboard__item">T</div>
-        <div class="keyboard__item">Y</div>
-        <div class="keyboard__item">U</div>
-        <div class="keyboard__item">I</div>
-        <div class="keyboard__item">O</div>
-        <div class="keyboard__item">P</div>
-        <div class="keyboard__item">[</div>
-        <div class="keyboard__item">]</div>
-        <div class="keyboard__item">\</div>
-        <div class="keyboard__item">Caps Lock</div>
-        <div class="keyboard__item">A</div>
-        <div class="keyboard__item">S</div>
-        <div class="keyboard__item">D</div>
-        <div class="keyboard__item">F</div>
-        <div class="keyboard__item">G</div>
-        <div class="keyboard__item">H</div>
-        <div class="keyboard__item">J</div>
-        <div class="keyboard__item">K</div>
-        <div class="keyboard__item">L</div>
-        <div class="keyboard__item">;</div>
-        <div class="keyboard__item">"</div>
-        <div class="keyboard__item">Enter</div>
-        <div class="keyboard__item">Shift</div>
-        <div class="keyboard__item">Z</div>
-        <div class="keyboard__item">X</div>
-        <div class="keyboard__item">C</div>
-        <div class="keyboard__item">V</div>
-        <div class="keyboard__item">B</div>
-        <div class="keyboard__item">N</div>
-        <div class="keyboard__item">M</div>
-        <div class="keyboard__item">,</div>
-        <div class="keyboard__item">.</div>
-        <div class="keyboard__item">/</div>
-        <div class="keyboard__item">Pg Up</div>
-        <div class="keyboard__item">Shift</div>
-        <div class="keyboard__item">Ctrl</div>
-        <div class="keyboard__item"></div>
+        <div id="backquote" class="keyboard__item">`</div>
+        <div id="digit1" class="keyboard__item">1</div>
+        <div id="digit2" class="keyboard__item">2</div>
+        <div id="digit3" class="keyboard__item">3</div>
+        <div id="digit4" class="keyboard__item">4</div>
+        <div id="digit5" class="keyboard__item">5</div>
+        <div id="digit6" class="keyboard__item">6</div>
+        <div id="digit7" class="keyboard__item">7</div>
+        <div id="digit8" class="keyboard__item">8</div>
+        <div id="digit9" class="keyboard__item">9</div>
+        <div id="digit0" class="keyboard__item">0</div>
+        <div id="minus" class="keyboard__item">-</div>
+        <div id="equal" class="keyboard__item">=</div>
+        <div id="backspace" class="keyboard__item backspace">Backspace</div>
+        <div id="tab" class="keyboard__item tab">Tab</div>
+        <div id="keyQ" class="keyboard__item">Q</div>
+        <div id="keyW" class="keyboard__item">W</div>
+        <div id="keyE" class="keyboard__item">E</div>
+        <div id="keyR" class="keyboard__item">R</div>
+        <div id="keyT" class="keyboard__item">T</div>
+        <div id="keyY" class="keyboard__item">Y</div>
+        <div id="keyU" class="keyboard__item">U</div>
+        <div id="keyI" class="keyboard__item">I</div>
+        <div id="keyO" class="keyboard__item">O</div>
+        <div id="keyP" class="keyboard__item">P</div>
+        <div id="BracketLeft" class="keyboard__item">[</div>
+        <div id="BracketRight" class="keyboard__item">]</div>
+        <div id="Backslash" class="keyboard__item backslash">\</div>
+        <div id="CapsLock" class="keyboard__item capsLk">Caps Lock</div>
+        <div id="keyA" class="keyboard__item active">A</div>
+        <div id="keyS" class="keyboard__item active">S</div>
+        <div id="keyD" class="keyboard__item active">D</div>
+        <div id="keyF" class="keyboard__item active">F</div>
+        <div id="keyG" class="keyboard__item active">G</div>
+        <div id="keyH" class="keyboard__item">H</div>
+        <div id="keyJ" class="keyboard__item">J</div>
+        <div id="keyK" class="keyboard__item">K</div>
+        <div id="keyL" class="keyboard__item">L</div>
+        <div id="Semicolon" class="keyboard__item">;</div>
+        <div id="Quote" class="keyboard__item">"</div>
+        <div id="Enter" class="keyboard__item enter">Enter</div>
+        <div id="ShiftLeft" class="keyboard__item leftShift">Shift</div>
+        <div id="keyZ" class="keyboard__item active">Z</div>
+        <div id="keyX" class="keyboard__item active">X</div>
+        <div id="keyC" class="keyboard__item active">C</div>
+        <div id="keyV" class="keyboard__item active">V</div>
+        <div id="keyB" class="keyboard__item">B</div>
+        <div id="keyN" class="keyboard__item">N</div>
+        <div id="keyM" class="keyboard__item">M</div>
+        <div id="Comma" class="keyboard__item">,</div>
+        <div id="Period" class="keyboard__item">.</div>
+        <div id="Slash" class="keyboard__item">/</div>
+        <div id="ShiftRight" class="keyboard__item rightShift">Shift</div>
+        <div id="CtrlLeft" class="keyboard__item leftCtrl">Ctrl</div>
+        <div id="MetaLeft" class="keyboard__item command">Command</div>
+        <div id="AltLeft" class="keyboard__item leftAlt">Alt</div>
+        <div id="Space" class="keyboard__item space">Space</div>
+        <div id="AltRight" class="keyboard__item rightAlt">Alt</div>
+        <div id="CtrlRight" class="keyboard__item rightCtrl">Ctrl</div>
     </div>
     <div class="buttons">
         <button class="buttons__btn" id="channel0">Channel 1</button>

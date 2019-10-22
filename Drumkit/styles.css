@@ -11,16 +11,17 @@ body{
     flex-direction: column;
     align-items: center;
     justify-items: center;
+    box-sizing: border-box;
     padding: 0px;
-    margin:0;
+    margin:0px;
     align-content: center;
     justify-content: center;
-    font-size: 62.5%;
+    font-size:10px;
 }
 
 .buttons{
     display: flex;
-    margin-top: 5rem;
+    margin-top: 1rem;
     justify-self: center;
 }
 
@@ -52,3 +53,4 @@ body{
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;;
 }
+

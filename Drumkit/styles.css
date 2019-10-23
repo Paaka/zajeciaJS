@@ -48,7 +48,7 @@ body{
 
 .heading{
     font-size:3rem;
-    background-image: linear-gradient(to bottom, orange, orangered);
+    background-image: linear-gradient(to bottom, rgb(255, 123, 0), orangered);
     color:transparent;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;;

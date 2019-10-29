@@ -1,9 +1,10 @@
 {
-  "name": "Drumkit",
+  "name": "drumkit",
   "version": "1.0.0",
   "description": "",
   "main": "script.js",
   "scripts": {
+    "lint": "eslint \"scripts/**/*.{js}\" --quiet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

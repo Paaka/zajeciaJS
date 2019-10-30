@@ -14,10 +14,11 @@ function appStart() {
     // ctx.fill();
     // ctx.arc(500,500,50, 0, 2 * Math.PI);
     // ctx.stroke();
+    
     drawImage();
 }
 
-function drawImage(params) {
+function drawImage() {
     const image = new Image();
     image.src = "./img/img1.jpg"
     image.addEventListener('load', ()=>{

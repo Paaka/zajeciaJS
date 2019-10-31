@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded",appStart);
 
+const colorsParent = document.querySelector('#colors');
 let ctx;
 
 
@@ -21,6 +22,9 @@ function appStart() {
         .addEventListener('touchstart',()=>{
             myCanvas.brushShape = new Brush('circle')
         })
+
+    colorsParent
+        .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e))
 }
 
 

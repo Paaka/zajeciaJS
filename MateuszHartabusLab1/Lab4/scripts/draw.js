@@ -4,6 +4,7 @@ class Draw{
     constructor(element){
         this.canvas = document.querySelector(`#${element}`);
         this.ctx = this.canvas.getContext('2d');
+        this.color = "black";
         this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
 
         this.drawBackground()
@@ -14,9 +15,9 @@ class Draw{
         const X = e.touches[0].clientX - this.canvas.offsetLeft;
         const Y = e.touches[0].clientY - this.canvas.offsetTop;
      
-        
+        this.ctx.beginPath();
         this.ctx.rect(X,Y, 10,10);
-        this.ctx.fillStyle = "#FF0000";
+        this.ctx.fillStyle = this.color;
         this.ctx.fill();
      
      }
@@ -28,6 +29,13 @@ class Draw{
             this.ctx.drawImage(image,0,0);
         })
         
+    }
+
+    chooseColor(e){
+        if(e.target !== e.currentTarget){
+            this.color = e.target.value
+        }
+        e.stopPropagation();
     }
 }
 

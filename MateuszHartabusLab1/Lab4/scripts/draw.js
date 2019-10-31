@@ -1,19 +1,33 @@
 /* eslint-disable no-undef */
+// eslint-disable-next-line no-unused-vars
 class Draw{
     constructor(element){
         this.canvas = document.querySelector(`#${element}`);
-        this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e, 'value', 'color'));
+        this.ctx = this.canvas.getContext('2d');
+        this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
+
+        this.drawBackground()
     }
 
-    paintOnCavas(e, value, color) {
+    paintOnCavas(e) {
         console.log(e)
         const X = e.touches[0].clientX - this.canvas.offsetLeft;
         const Y = e.touches[0].clientY - this.canvas.offsetTop;
      
-        ctx.rect(X,Y, 10,10);
-        ctx.fillStyle = "#FF0000";
-        ctx.fill();
+        
+        this.ctx.rect(X,Y, 10,10);
+        this.ctx.fillStyle = "#FF0000";
+        this.ctx.fill();
      
      }
+
+    drawBackground() {
+        const image = new Image();
+        image.src = "./img/img1.jpg"
+        image.addEventListener('load', ()=>{
+            this.ctx.drawImage(image,0,0);
+        })
+        
+    }
 }
 

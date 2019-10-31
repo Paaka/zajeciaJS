@@ -4,28 +4,26 @@ let ctx;
 
 
 function appStart() {
-    
-    ctx = canvas.getContext('2d');
-
-    const idk = new Draw('canvas');
+    const myCanvas = new Draw('canvas');
 
     document
         .querySelector('#darken')
         .addEventListener('click',()=> darkenFilter())
         
-    drawImage();
+    document
+        .querySelector('#square')
+        .addEventListener('touchstart',()=>{
+            myCanvas.brushShape = new Brush('square')
+        })
 
-    
+    document
+        .querySelector('#circle')
+        .addEventListener('touchstart',()=>{
+            myCanvas.brushShape = new Brush('circle')
+        })
 }
 
-function drawImage() {
-    const image = new Image();
-    image.src = "./img/img1.jpg"
-    image.addEventListener('load', ()=>{
-        ctx.drawImage(image,0,0);
-    })
-    
-}
+
 
 function darkenFilter(amount = 30){
     

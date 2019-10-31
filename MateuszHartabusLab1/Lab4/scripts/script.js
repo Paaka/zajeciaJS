@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded",appStart);
 let canvas;
 let ctx;
 
+
 function appStart() {
     canvas = document.querySelector('#canvas');
     ctx = canvas.getContext('2d');
@@ -10,12 +11,10 @@ function appStart() {
     document
         .querySelector('#darken')
         .addEventListener('click',()=> darkenFilter())
-    // ctx.rect(50,50, 300, 200);
-    // ctx.fill();
-    // ctx.arc(500,500,50, 0, 2 * Math.PI);
-    // ctx.stroke();
-    
+        
     drawImage();
+
+    canvas.addEventListener('touchmove', paintOnCavas)
 }
 
 function drawImage() {
@@ -38,4 +37,15 @@ function darkenFilter(amount = 30){
     }
     console.log(canvasData);
     ctx.putImageData(canvasData, 0,0)
+}
+
+function paintOnCavas(e) {
+   const X = e.touches[0].clientX - this.offsetLeft;
+   const Y = e.touches[0].clientY - this.offsetTop;
+
+   console.log(this.offsetLeft);
+   ctx.rect(X,Y, 10,10);
+   ctx.fillStyle = "#FF0000";
+   ctx.fill();
+    
 }

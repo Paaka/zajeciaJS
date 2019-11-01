@@ -15,14 +15,21 @@ function appStart() {
         .querySelector('#square')
         .addEventListener('touchstart',()=>{
             myCanvas.brushShape = new Brush('square')
-        })
+        });
 
     document
         .querySelector('#circle')
         .addEventListener('touchstart',()=>{
             myCanvas.brushShape = new Brush('circle')
+        });
+        
+    document
+        .querySelector('#slash')
+        .addEventListener('touchstart',()=>{
+            myCanvas.brushShape = new Brush('slash')
         })
 
+        
     colorsParent
         .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e))
 }

@@ -28,6 +28,11 @@ class Draw{
             this.ctx.arc(X,Y, 5,0,Math.PI*2,false);
             this.ctx.fillStyle = this.color;
             this.ctx.fill();
+        }else if(this.brushShape ==='slash'){
+            this.ctx.beginPath();
+            this.ctx.moveTo(X, Y);
+            this.ctx.lineTo(X+5, Y+5);
+            this.ctx.stroke();
         }
         
      

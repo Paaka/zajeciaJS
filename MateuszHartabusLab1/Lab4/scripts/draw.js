@@ -6,6 +6,7 @@ class Draw{
         this.ctx = this.canvas.getContext('2d');
         this.color = "black";
         this.brushShape = 'square';
+        this.size = 10;
         this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
 
         this.drawBackground()
@@ -41,8 +42,9 @@ class Draw{
     drawShape(X,Y){
     switch(this.brushShape){
         case 'square':{
+            console.log(this.size);
             this.ctx.beginPath();
-            this.ctx.rect(X,Y, 10,10);
+            this.ctx.rect(X,Y, this.size,this.size);
             this.ctx.fillStyle = this.color;
             this.ctx.fill();
             break;
@@ -63,6 +65,18 @@ class Draw{
             this.ctx.stroke()
         }         
         }      
+    }
+
+    incrementSize(){
+        if(this.size <20){
+            this.size += 2;
+        }
+    }
+
+    decrementSize(){
+        if(this.size > 2){
+            this.size -= 2;
+        }
     }
 
     

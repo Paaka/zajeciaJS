@@ -29,6 +29,13 @@ function appStart() {
             myCanvas.brushShape = new Brush('slash')
         })
 
+    document
+        .querySelector('#plus')
+        .addEventListener('click',(e)=> myCanvas.incrementSize());
+
+     document
+        .querySelector('#minus')
+        .addEventListener('click',(e)=> myCanvas.decrementSize());
         
     colorsParent
         .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e))

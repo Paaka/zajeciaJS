@@ -17,27 +17,8 @@ class Draw{
         
         const brush = new Brush(this.brushShape);
         this.brushShape = brush.getBrush();
+        this.drawShape(X,Y);
         
-        if(this.brushShape ==='square'){
-            this.ctx.beginPath();
-            this.ctx.rect(X,Y, 10,10);
-            this.ctx.fillStyle = this.color;
-            this.ctx.fill();
-        }else if(this.brushShape ==='circle'){
-            this.ctx.beginPath();
-            this.ctx.arc(X,Y, 5,0,Math.PI*2,false);
-            this.ctx.fillStyle = this.color;
-            this.ctx.fill();
-        }else if(this.brushShape ==='slash'){
-            this.ctx.beginPath();
-            this.ctx.moveTo(X, Y);
-            this.ctx.lineTo(X+5, Y+5);
-            this.ctx.stroke();
-        }
-        
-     
-        
-     
      }
 
     drawBackground() {
@@ -55,6 +36,33 @@ class Draw{
             this.color = e.target.value
         }
         e.stopPropagation();
+    }
+
+    drawShape(X,Y){
+    switch(this.brushShape){
+        case 'square':{
+            this.ctx.beginPath();
+            this.ctx.rect(X,Y, 10,10);
+            this.ctx.fillStyle = this.color;
+            this.ctx.fill();
+            break;
+        }   
+        case 'circle':{
+            this.ctx.beginPath();
+            this.ctx.arc(X,Y, 5,0,Math.PI*2,false);
+            this.ctx.fillStyle = this.color;
+            this.ctx.fill();
+            break;
+        }
+        case 'slash':{
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = this.color;
+            this.ctx.lineWidth = 2;
+            this.ctx.moveTo(X, Y);
+            this.ctx.lineTo(X+5, Y+5);
+            this.ctx.stroke()
+        }         
+        }      
     }
 
     

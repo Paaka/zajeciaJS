@@ -30,6 +30,12 @@ function appStart() {
         })
 
     document
+        .querySelector('#triangle')
+        .addEventListener('touchstart',()=>{
+            myCanvas.brushShape = new Brush('triangle')
+        })
+
+    document
         .querySelector('#plus')
         .addEventListener('click',(e)=> myCanvas.incrementSize());
 

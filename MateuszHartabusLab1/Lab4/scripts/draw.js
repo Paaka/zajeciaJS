@@ -18,9 +18,8 @@ class Draw{
         
         const brush = new Brush(this.brushShape);
         this.brushShape = brush.getBrush();
-        this.drawShape(X,Y);
-        
-     }
+        this.drawShape(X,Y);       
+    }
 
     drawBackground() {
         const image = new Image();
@@ -51,7 +50,7 @@ class Draw{
         }   
         case 'circle':{
             this.ctx.beginPath();
-            this.ctx.arc(X,Y, 5,0,Math.PI*2,false);
+            this.ctx.arc(X,Y, (this.size/2),0,Math.PI*2,false);
             this.ctx.fillStyle = this.color;
             this.ctx.fill();
             break;
@@ -59,11 +58,22 @@ class Draw{
         case 'slash':{
             this.ctx.beginPath();
             this.ctx.strokeStyle = this.color;
-            this.ctx.lineWidth = 2;
+            this.ctx.lineWidth = this.size/2;
             this.ctx.moveTo(X, Y);
             this.ctx.lineTo(X+5, Y+5);
             this.ctx.stroke()
-        }         
+            break;
+        }
+        case 'triangle':{
+            this.ctx.beginPath();
+            this.ctx.fillStyle = this.color;
+            this.ctx.lineWidth = this.size;
+            this.ctx.moveTo(X, Y);
+            this.ctx.lineTo(X+this.size, Y);
+            this.ctx.lineTo(X+(this.size/2), Y-this.size);
+            this.ctx.fill()
+            break;
+        }     
         }      
     }
 

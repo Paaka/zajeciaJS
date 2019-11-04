@@ -41,11 +41,15 @@ function appStart() {
         .addEventListener('click',(e)=> myCanvas.decrementSize());
         
     colorsParent
-        .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e))
+        .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e));
 
     document
         .querySelector('#darken')
-        .addEventListener('click',()=> new Filter('canvas').darkenFilter())
+        .addEventListener('click',()=> new Filter('canvas').darkenFilter());
+
+    document
+        .querySelector('#lighter')
+        .addEventListener('click',()=> new Filter('canvas').lighterFilter());
         
 }
 

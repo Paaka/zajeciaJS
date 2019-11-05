@@ -34,30 +34,24 @@ function appStart() {
         })
 
     document
+        .querySelector('#hex')
+        .addEventListener('touchstart',()=>{
+            myCanvas.brushShape = new Brush('hex')
+        })
+
+    document
         .querySelector('#plus')
-        .addEventListener('click',(e)=> myCanvas.incrementSize());
+        .addEventListener('click',()=> myCanvas.incrementSize());
 
      document
         .querySelector('#minus')
-        .addEventListener('click',(e)=> myCanvas.decrementSize());
+        .addEventListener('click',()=> myCanvas.decrementSize());
         
     colorsParent
         .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e));
 
     filterParent
         .addEventListener('touchstart',(ev)=> new Filter('canvas', ev).chooseFilter());
-
-    // document
-    //     .querySelector('#darken')
-    //     .addEventListener('click',()=> new Filter('canvas').darkenFilter());
-
-    // document
-    //     .querySelector('#lighter')
-    //     .addEventListener('click',()=> new Filter('canvas').lighterFilter());
-
-    // document
-    //     .querySelector('#moreRed')
-    //     .addEventListener('click',()=> new Filter('canvas').redFilter());
         
 }
 

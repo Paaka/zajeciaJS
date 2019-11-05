@@ -73,7 +73,21 @@ class Draw{
             this.ctx.lineTo(X+(this.size/2), Y-this.size);
             this.ctx.fill()
             break;
-        }     
+        }
+        case 'hex':{
+            this.ctx.beginPath();
+            this.ctx.fillStyle = this.color;
+            this.ctx.lineWidth = this.size;
+            this.ctx.moveTo(X, Y)
+            this.ctx.lineTo(X+(this.size/3), Y-(this.size/2));
+            this.ctx.lineTo(X+(this.size/3)*2, Y-(this.size/2));
+            this.ctx.lineTo(X+this.size, Y);
+            this.ctx.lineTo(X+(this.size/3)*2, Y+(this.size/2));
+            this.ctx.lineTo(X+(this.size/3), Y+(this.size/2));
+            this.ctx.fill()
+            break;
+        }    
+          
         }      
     }
 

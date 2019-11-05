@@ -5,6 +5,7 @@ class Filter{
         this.height = this.canvas.height;
         this.width = this.canvas.width;
         this.info = e;
+        //
     }
 
     chooseFilter(){

@@ -20,7 +20,6 @@ body{
 .allItems{
     width: 95vw;
     height: 90vh;
-    background-color: red;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
@@ -52,11 +51,14 @@ body{
     height: 2rem;
     width: 2rem;
     border: 2px solid #eee;
+    background: red;
+}
+.inputs__colors--input{
+    height: 1.6rem;
+    width: 1.5rem;
+    border: none;
 }
 
-.inputs__colors--button + .red{
-    background-color: red;
-}
 
 .inputs__colors--button + .blue{
     background-color: blue;
@@ -64,4 +66,31 @@ body{
 
 .inputs__colors--button + .black{
     background-color: black;
+}
+
+.inputs__colors--button + .yellow{
+    background-color: yellow;
+}
+
+.inputs__colors--button + .white{
+    background-color: white;
+}
+
+.inputs__colors--button + .green{
+    background-color: green;
+}
+
+.inputs__colors--button + .brown{
+    background-color: brown;
+}
+
+.inputs__colors--button + .orange{
+    background-color: orange;
+}
+.inputs__colors--button + .orangered{
+    background-color: orangered;
+}
+
+.inputs__colors--button + .aqua{
+    background-color: aqua;
 }

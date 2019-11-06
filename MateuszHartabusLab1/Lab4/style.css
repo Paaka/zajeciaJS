@@ -11,11 +11,15 @@ body{
     background-color: #fff;
     width: 800px;
     height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 2rem;
 }
 
 .allItems{
-    width: 80vw;
-    height: 80vh;
+    width: 95vw;
+    height: 90vh;
     background-color: red;
     display: flex;
     flex-direction: row-reverse;
@@ -25,5 +29,39 @@ body{
 .inputs{
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
+    margin: 1rem;
+    align-content: space-between;
+    border: 1px black dotted;
+    padding: 1rem;
+}
+
+.colors{
+    margin: 1rem;
+}
+
+.inputs__colors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-be;
+    margin: 2rem 0;
+}
+
+.inputs__colors--button{
+    margin-bottom: 1px;
+    margin-right: 1px;
+    height: 2rem;
+    width: 2rem;
+    border: 2px solid #eee;
+}
+
+.inputs__colors--button + .red{
+    background-color: red;
+}
+
+.inputs__colors--button + .blue{
+    background-color: blue;
+}
+
+.inputs__colors--button + .black{
+    background-color: black;
 }

@@ -94,3 +94,24 @@ body{
 .inputs__colors--button + .aqua{
     background-color: aqua;
 }
+
+
+.inputs__colors--button + .lime{
+    background-color: lime;
+}
+
+
+.inputs__colors--button + .grey{
+    background-color: grey;
+}
+
+
+.inputs__colors--button + .sienna{
+    background-color: sienna;
+}
+.inputs__colors--button + .purple{
+    background-color: purple;
+}
+.inputs__colors--button + .pink{
+    background-color: pink;
+}

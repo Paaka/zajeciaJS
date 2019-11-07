@@ -39,6 +39,12 @@ function appStart() {
             myCanvas.brushShape = new Brush('hex')
         })
 
+        document
+        .querySelector('#colorInput')
+        .addEventListener('change',(e)=>{
+            myCanvas.color = e.target.value
+        })
+
     document
         .querySelector('#plus')
         .addEventListener('click',()=> myCanvas.incrementSize());

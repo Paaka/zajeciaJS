@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,700,900&display=swap');
+
 html{
     box-sizing: border-box;
     padding: 0;
@@ -5,7 +7,12 @@ html{
 }
 
 body{
-    background-color: lightslategray;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, darkgrey, #333) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 #canvas{
     background-color: #fff;
@@ -15,6 +22,7 @@ body{
     flex-direction: column;
     align-self: center;
     margin: 2rem;
+    box-shadow: black 0 0 30px 5px;
 }
 
 .allItems{
@@ -32,10 +40,24 @@ body{
     align-content: space-between;
     border: 1px black dotted;
     padding: 1rem;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.colors{
-    margin: 1rem;
+.inputs__brushes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.inputs__brushes--item{
+    width: 3rem;
+    height: 3rem;
+    background-color: white;  
+    font-size: 1.3rem;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-right: 2px;
 }
 
 .inputs__colors{
@@ -53,10 +75,42 @@ body{
     border: 2px solid #eee;
     background: red;
 }
+
 .inputs__colors--input{
     height: 1.6rem;
     width: 1.5rem;
     border: none;
+}
+
+.inputs__size{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-direction: row;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.inputs__size--btn{
+    height: 3rem;
+    width: 3rem;
+    margin: 0 10px;
+    border-radius: 50%;
+    font-size: 2rem;
+    color:black;
+    background-color: #eee;
+    border: 2px solid black;
+}
+
+.filters__btn{
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #eee;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid black;
 }
 
 
@@ -95,23 +149,22 @@ body{
     background-color: aqua;
 }
 
-
 .inputs__colors--button + .lime{
     background-color: lime;
 }
-
 
 .inputs__colors--button + .grey{
     background-color: grey;
 }
 
-
 .inputs__colors--button + .sienna{
     background-color: sienna;
 }
+
 .inputs__colors--button + .purple{
     background-color: purple;
 }
+
 .inputs__colors--button + .pink{
     background-color: pink;
 }

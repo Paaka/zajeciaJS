@@ -10,13 +10,20 @@
 <body>
 <div class="allItems">
  <div class="inputs">
-    <button id="square">Kwadrat</button>
-    <button id="circle">Circle</button>
-    <button id="triangle">Trojkat</button>
-    <button id="slash">/</button>
-    <button id="hex">hex</button>
-    <button id="minus">-</button>
-    <button id="plus">+</button>
+    <h2>Choose bursh :</h2>
+     <div class="inputs__brushes">
+        <button id="square" class="inputs__brushes--item">&#9632;</button>
+        <button id="circle" class="inputs__brushes--item">&#9679;</button>
+        <button id="triangle" class="inputs__brushes--item">&#9650;</button>
+        <button id="slash" class="inputs__brushes--item">/</button>
+        <button id="hex" class="inputs__brushes--item">&#11042;</button>
+    </div>
+        <div class="inputs__size">
+            <button id="minus" class="inputs__size--btn">-</button>
+            <p>Change Size</p>
+            <button id="plus" class="inputs__size--btn">+</button>
+        </div>
+    <h2>Choose color :</h2>
     <div id="colors" class="inputs__colors">
         <button id="red" value="red" class="inputs__colors--button red"></button>
         <button id="blue" value="blue" class="inputs__colors--button blue"></button>
@@ -35,12 +42,13 @@
         <button id="pink" value="pink" class="inputs__colors--button pink"></button>
         <input id="colorInput" class="inputs__colors--input" type="color">
     </div>
+
     <div id="filters">
-        <button id="darken">Ściemiaj</button>
-        <button id="lighter">Pojaśniaj</button>
-        <button id="moreRed">Czerwieniej</button>
-        <button id="moreGreen">Zieleniej</button>
-        <button id="moreBlue">Niebieskawiej</button>
+        <button id="darken" class="filters__btn">Darken</button>
+        <button id="lighter" class="filters__btn">Lighter</button>
+        <button id="moreRed" class="filters__btn">Red</button>
+        <button id="moreGreen" class="filters__btn">Green</button>
+        <button id="moreBlue" class="filters__btn">Blue</button>
     </div>
 </div>
     <canvas id="canvas" width="800" height="600"></canvas>

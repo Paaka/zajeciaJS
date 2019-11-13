@@ -39,11 +39,28 @@ function appStart() {
             myCanvas.brushShape = new Brush('hex')
         })
 
+  
         document
         .querySelector('#colorInput')
         .addEventListener('change',(e)=>{
             myCanvas.color = e.target.value
         })
+
+   const input = document.querySelector('input[type=file]');
+        
+   input.addEventListener('change',(e)=> {
+       const file = input.files[0];
+       const reader = new FileReader();
+       const img = new Image;
+       reader.onload = () => {
+        img.src = reader.result;
+        console.log(img.src);
+        reader.readAsDataURL(file);
+       }
+        
+
+      document.body.appendChild(img);
+});
 
     document
         .querySelector('#plus')

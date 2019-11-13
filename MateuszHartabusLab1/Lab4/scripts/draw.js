@@ -7,8 +7,8 @@ class Draw{
         this.color = "black";
         this.brushShape = 'square';
         this.size = 10;
-        this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
 
+        this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
         this.drawBackground()
     }
 
@@ -23,11 +23,22 @@ class Draw{
 
     drawBackground() {
         const image = new Image();
-        image.src = "./img/img1.jpg"
+        image.src = "./img/img1.jpg";
         image.addEventListener('load', ()=>{
             this.ctx.drawImage(image,0,0);
         })
         
+    }
+
+    changeBackground(file){
+        const reader = new FileReader();
+        reader.onload = function () {
+            console.log(btoa(reader.result))
+            const image = new Image();
+            image.src = reader.result.split(',')[1];
+            this.ctx.drawImage(image, 0,0)
+        }
+        result.createObjectURL(file) 
     }
 
     chooseColor(e){

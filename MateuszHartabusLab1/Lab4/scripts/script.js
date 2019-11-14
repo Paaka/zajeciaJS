@@ -11,11 +11,9 @@ function appStart() {
 
 
   
-        // document
-        // .querySelector('#colorInput')
-        // .addEventListener('change',(e)=>{
-        //     myCanvas.color = e.target.value
-        // })
+        document
+        .querySelector('#colorFromInput')
+        .addEventListener('change',(e)=> myCanvas.chooseColor(e));
 
    const input = document.querySelector('#inputFile');
         

@@ -50,7 +50,9 @@ class Draw{
     }
 
     chooseColor(e){
-        console.log(e.target)
+        if(e.target.id === "colorFromInput"){
+             this.color = e.target.value;
+        }
         if(e.target !== e.currentTarget){ //btn różny od parenta
             this.color = e.target.value
         }

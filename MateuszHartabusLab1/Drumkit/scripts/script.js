@@ -234,8 +234,7 @@ startRecordBtn2.addEventListener('click',startTime);
 startRecordBtn3.addEventListener('click',startTime);
 startRecordBtn4.addEventListener('click',startTime);
 
-function playaudio(e){
-    
+function playaudio(e){   
     const keyPressed = e.code;
     const currentChanel = showActiveChanel();
     playSound(keyPressed,allSounds, currentChanel);
@@ -262,13 +261,12 @@ function playSound(key,list,currentChannal){
         if(!isNaN(startTime)){
             startingTime[currentChannal[0].numInArray].song.push({
                 code: key,
-                time: startTime, // ==> jeśli klucz jest == zmiennej wystarczy podać sam klucz np. time 
+                time: startTime, 
             })
         }
     }else{
-        console.log("nie ta liczba")
+        window.alert("Podany przycisk nie ma przypisanego dźwięku")
     }
-
     displayCurrentKey(key, allSounds);
 }
 
@@ -293,9 +291,7 @@ function playRecordedAudio(){
     })
 }
 
-
 function showActiveChanel(){
     const resultOfFilter = startingTime.filter(el => el.active);
-   // const currentChannel = resultOfFilter[0].numInArray;
     return resultOfFilter;
 }

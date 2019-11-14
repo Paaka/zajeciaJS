@@ -41,6 +41,14 @@ class Draw{
         result.createObjectURL(file) 
     }
 
+    chooseBrush(e){
+        console.log(e.target.id)
+        if(e.target !== e.currentTarget){ //btn różny od parenta
+            this.brushShape = e.target.id
+        }
+        e.stopPropagation();
+    }
+
     chooseColor(e){
         console.log(e.target)
         if(e.target !== e.currentTarget){ //btn różny od parenta

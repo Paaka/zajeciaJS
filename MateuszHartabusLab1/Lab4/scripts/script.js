@@ -2,56 +2,28 @@ document.addEventListener("DOMContentLoaded",appStart);
 
 const colorsParent = document.querySelector('#colors');
 const filterParent = document.querySelector('#filters');
+const brushParent = document.querySelector('#brushes');
 let ctx;
 
 
 function appStart() {
     const myCanvas = new Draw('canvas');
 
-    
-    document
-        .querySelector('#square')
-        .addEventListener('touchstart',()=>{
-            myCanvas.brushShape = new Brush('square')
-        });
-
-    document
-        .querySelector('#circle')
-        .addEventListener('touchstart',()=>{
-            myCanvas.brushShape = new Brush('circle')
-        });
-        
-    document
-        .querySelector('#slash')
-        .addEventListener('touchstart',()=>{
-            myCanvas.brushShape = new Brush('slash')
-        })
-
-    document
-        .querySelector('#triangle')
-        .addEventListener('touchstart',()=>{
-            myCanvas.brushShape = new Brush('triangle')
-        })
-
-    document
-        .querySelector('#hex')
-        .addEventListener('touchstart',()=>{
-            myCanvas.brushShape = new Brush('hex')
-        })
 
   
-        document
-        .querySelector('#colorInput')
-        .addEventListener('change',(e)=>{
-            myCanvas.color = e.target.value
-        })
+        // document
+        // .querySelector('#colorInput')
+        // .addEventListener('change',(e)=>{
+        //     myCanvas.color = e.target.value
+        // })
 
-   const input = document.querySelector('input[type=file]');
+   const input = document.querySelector('#inputFile');
         
    input.addEventListener('change',(e)=> {
        const file = input.files[0];
        const reader = new FileReader();
        const img = new Image;
+       console.log(file);
        reader.onload = () => {
         img.src = reader.result;
         console.log(img.src);
@@ -69,6 +41,9 @@ function appStart() {
      document
         .querySelector('#minus')
         .addEventListener('click',()=> myCanvas.decrementSize());
+
+    brushParent
+        .addEventListener('touchstart',(e)=> myCanvas.chooseBrush(e))
         
     colorsParent
         .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e));

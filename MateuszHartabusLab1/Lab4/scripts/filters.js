@@ -67,6 +67,7 @@ class Filter{
     }
 
     redFilter(){
+        console.log('??')
         const canvasData = this.ctx.getImageData(0,0, this.width, this.height);
 
         for(let i=0; i<canvasData.data.length;i+=4){

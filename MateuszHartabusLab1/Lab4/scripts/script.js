@@ -6,11 +6,9 @@ let ctx;
 function appStart() {
     const myCanvas = new Draw('canvas');
 
-    // document
-    // .querySelector('#inputRed')
-    // .addEventListener('change',(e)=>{
-    //     console.log(e.target.value);
-    // });
+    document
+    .querySelector('#inputRed')
+    .addEventListener('change',(ev)=> new Filter('canvas', ev).redFilter());
 
         document
         .querySelector('#colorFromInput')

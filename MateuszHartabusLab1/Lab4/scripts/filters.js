@@ -6,10 +6,13 @@ class Filter{
         this.width = this.canvas.width;
         this.info = e;
         //
+
+        this.red = 0;
     }
 
     chooseFilter(){
 
+        console.log(this.info.target.id);
         if(this.info.target !== this.info.currentTarget){ //btn różny od parenta
             switch(this.info.target.id){
                 case 'darken':{
@@ -20,7 +23,7 @@ class Filter{
                     this.lighterFilter();
                     break;
                 }
-                case 'moreRed':{
+                case 'inputRed':{
                     this.redFilter();
                     break;
                 }
@@ -63,12 +66,14 @@ class Filter{
         this.ctx.putImageData(canvasData, 0,0)
     }
 
-    redFilter(amount = 20){
+    redFilter(){
         const canvasData = this.ctx.getImageData(0,0, this.width, this.height);
 
         for(let i=0; i<canvasData.data.length;i+=4){
-            canvasData.data[i] += amount;
+           this.red = this.info.target.value;
+          canvasData.data[i] = this.info.target.value;
         }
+        console.log(this.info.target.value);
 
         this.ctx.putImageData(canvasData, 0,0)
     }

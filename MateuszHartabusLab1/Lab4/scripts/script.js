@@ -1,16 +1,17 @@
 document.addEventListener("DOMContentLoaded",appStart);
 
-const colorsParent = document.querySelector('#colors');
-const filterParent = document.querySelector('#filters');
-const brushParent = document.querySelector('#brushes');
 let ctx;
 
 
 function appStart() {
     const myCanvas = new Draw('canvas');
 
+    // document
+    // .querySelector('#inputRed')
+    // .addEventListener('change',(e)=>{
+    //     console.log(e.target.value);
+    // });
 
-  
         document
         .querySelector('#colorFromInput')
         .addEventListener('change',(e)=> myCanvas.chooseColor(e));
@@ -30,7 +31,7 @@ function appStart() {
         
 
       document.body.appendChild(img);
-});
+    });
 
     document
         .querySelector('#plus')
@@ -40,13 +41,16 @@ function appStart() {
         .querySelector('#minus')
         .addEventListener('click',()=> myCanvas.decrementSize());
 
-    brushParent
+    document
+        .querySelector('#brushes')
         .addEventListener('touchstart',(e)=> myCanvas.chooseBrush(e))
         
-    colorsParent
+    document
+        .querySelector('#colors')
         .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e));
 
-    filterParent
+    document
+        .querySelector('#filters')
         .addEventListener('touchstart',(ev)=> new Filter('canvas', ev).chooseFilter());
         
 }

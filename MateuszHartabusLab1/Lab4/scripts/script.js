@@ -10,6 +10,15 @@ function appStart() {
     .querySelector('#inputRed')
     .addEventListener('change',(ev)=> new Filter('canvas', ev).redFilter());
 
+    document
+    .querySelector('#inputGreen')
+    .addEventListener('change',(ev)=> new Filter('canvas', ev).greenFilter());
+
+    document
+    .querySelector('#inputBlue')
+    .addEventListener('change',(ev)=> new Filter('canvas', ev).blueFilter());
+
+
         document
         .querySelector('#colorFromInput')
         .addEventListener('change',(e)=> myCanvas.chooseColor(e));

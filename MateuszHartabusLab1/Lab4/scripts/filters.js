@@ -79,21 +79,21 @@ class Filter{
         this.ctx.putImageData(canvasData, 0,0)
     }
 
-    blueFilter(amount = 20){
+    blueFilter(){
         const canvasData = this.ctx.getImageData(0,0, this.width, this.height);
 
         for(let i=0; i<canvasData.data.length;i+=4){
-            canvasData.data[i+2] += amount;
+            canvasData.data[i+2] = this.info.target.value;
         }
 
         this.ctx.putImageData(canvasData, 0,0)
     }
 
-    greenFilter(amount = 20){
+    greenFilter(){
         const canvasData = this.ctx.getImageData(0,0, this.width, this.height);
 
         for(let i=0; i<canvasData.data.length;i+=4){
-            canvasData.data[i+1] += amount;
+            canvasData.data[i+1]  = this.info.target.value;
         }
 
         this.ctx.putImageData(canvasData, 0,0)

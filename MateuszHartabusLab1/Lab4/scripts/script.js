@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 document.addEventListener("DOMContentLoaded",appStart);
 
 
@@ -24,6 +25,19 @@ function appStart() {
     document
         .querySelector("#modalBrushes")
         .addEventListener('click', (ev)=> new Modal(ev).activateModal())
+
+    document
+        .querySelector("#modalColors")
+        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
+
+    document
+        .querySelector("#modalImages")
+        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
+
+    document
+        .querySelector("#modalFilters")
+        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
+
 
     document
         .querySelector('#inputRed')
@@ -62,9 +76,17 @@ function appStart() {
     document
         .querySelector('#filters')
         .addEventListener('touchstart',(ev)=> new Filter('canvas', ev).chooseFilter());
+
+    document
+        .querySelector('#saveImg')
+        .addEventListener('click',function(el) {
+
+            var image = canvas.toDataURL("image/jpg");
+            el.target.href = image;
+          })
         
     const input = document.querySelector('#inputFile');
-    input.addEventListener('change', function (e) {
+    input.addEventListener('change', function () {
         const reader = new FileReader();
         reader.onload = function () {
             const img = new Image();

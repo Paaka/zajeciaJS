@@ -10,10 +10,11 @@
 <body>
 <div class="allItems">
  <div class="inputs">
-    <div id="modalBrushes" class="inputBrushes">
+    <div id="modalBrushes" class="modalHeading">
         <h2 id="modalBrushes">Brushes</h2>
     </div>
     <div class="inputBrushesModal">
+        <h2>Choose Brush</h2>
      <div id="brushes" class="inputs__brushes">
         <button id="square" class="inputs__brushes--item">&#9632;</button>
         <button id="circle" class="inputs__brushes--item">&#9679;</button>
@@ -27,7 +28,12 @@
             <button id="plus" class="inputs__size--btn">+</button>
         </div>
     </div>    
+    <div id="modalColors" class="modalHeadingSecondary">
+        <h2 id="modalColors">Colors</h2>
+    </div>
+    <div class="inputColorsModal">
     <h2>Choose color :</h2>
+
     <div id="colors" class="inputs__colors">
         <button id="red" value="red" class="inputs__colors--button red"></button>
         <button id="blue" value="blue" class="inputs__colors--button blue"></button>
@@ -46,25 +52,41 @@
         <button id="pink" value="pink" class="inputs__colors--button pink"></button>
         <input id="colorFromInput" class="inputs__colors--input" type="color">
     </div>
+    </div>
+    <div id="modalImages" class="modalHeading">
+        <h2 id="modalImages">Background</h2>
+    </div>
+    <div class="inputImagesModal">
+        <h3>Choose your image :</h3>
     <input id="inputFile" type="file">
-    <div id="imageOne">
-        Autumn
+    <h3>Or use default:</h3>
+    <div class="imageWrapper">
+        <div  id="imageOne" class="previewImg1"></div>
+        <div  id="imageTwo" class="previewImg2"></div>
+        <div  id="imageThree" class="previewImg3"></div>
+        <div  id="imageFour" class="previewImg4"></div>
     </div>
-    <div id="imageTwo">
-        Road
     </div>
-    <div id="imageThree">
-        Sky
+    <div id="modalFilters" class="modalHeadingSecondary">
+        <h2 id="modalFilters">Filters</h2>
     </div>
-    <div id="imageFour">
-        river
-    </div>
+    <div class="inputFiltersModal">
     <div id="filters">
+    <h3>Change :</h3>
+    <div class="btnFilterWrapper">
         <button id="darken" class="filters__btn">Darken</button>
         <button id="lighter" class="filters__btn">Lighter</button>
-        <input type="range" name="Color Red" id="inputRed" value="0"  max="255" min="0" step="1" >
-        <input type="range" name="Color Red" id="inputGreen" value="0" max="255" min="0" step="1" >
-        <input type="range" name="Color Red" id="inputBlue" value="0" max="255" min="0" step="1" >
+    </div>
+    <h3>Change RGB :</h3>
+    <div class="sliderWrapper">
+        <input class="slider sliderRed" type="range" name="Color Red" id="inputRed" value="0"  max="255" min="0" step="1" >
+        <input class="slider sliderGreen" type="range" name="Color Red" id="inputGreen" value="0" max="255" min="0" step="1" >
+        <input class="slider sliderBlue" type="range" name="Color Red" id="inputBlue" value="0" max="255" min="0" step="1" >
+    </div>
+    </div>
+    </div>
+    <div class="modalHeading">
+        <a class="downloadBtn" id="saveImg" download="image.png" href="">Save Image</a>
     </div>
 </div>
     <canvas id="canvas" width="800" height="600"></canvas>

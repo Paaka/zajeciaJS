@@ -9,7 +9,6 @@ class Draw{
         this.size = 10;
 
         this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
-        this.drawBackground()
     }
 
     paintOnCavas(e) {
@@ -19,15 +18,6 @@ class Draw{
         const brush = new Brush(this.brushShape);
         this.brushShape = brush.getBrush();
         this.drawShape(X,Y);       
-    }
-
-    drawBackground() {
-        const image = new Image();
-        image.src = "./img/img1.jpg";
-        image.addEventListener('load', ()=>{
-            this.ctx.drawImage(image,0,0);
-        })
-        
     }
 
     changeBackground(file){

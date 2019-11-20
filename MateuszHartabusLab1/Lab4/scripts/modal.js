@@ -2,15 +2,9 @@ class Modal {
     constructor(event){
         this.e = event;
         this.id = this.e.target.id;
-
-        this.stateOfModals = {
-            brushesModalState : false,
-        }
     }
 
-    activateModal(){
-        this.chooseModal(this.id);
-    }
+
 
     showModal(input){
         document
@@ -23,48 +17,36 @@ class Modal {
             .querySelector(input).classList.remove("show")
     }
 
-    chooseModal(id){
-        switch(id){
-            case "modalBrushes":{
-                const checkIfThisClassExists = document.querySelector(".inputBrushesModal.show");
-                if(checkIfThisClassExists === null){
-                    this.showModal('.inputBrushesModal')
-                    break;
-                }else{
-                    this.removeModal('.inputBrushesModal')
-                    break;
-                }
-            }
-            case "modalColors":{
-                const checkIfThisClassExists = document.querySelector(".inputColorsModal.show");
-                if(checkIfThisClassExists === null){
-                    this.showModal('.inputColorsModal')
-                    break;
-                }else{
-                    this.removeModal('.inputColorsModal')
+    activateModal(str){
+        const classNameWithoutShow = str.slice(0,-5);
+        const checkIfThisClassExists = document.querySelector(str);
+        if(checkIfThisClassExists === null){
+            this.showModal(classNameWithoutShow)
+        }else{
+            this.removeModal(classNameWithoutShow)
+        }
+    }
+
+    chooseModal(){
+          if(this.e.target !== this.e.currentTarget){ //btn różny od parenta
+            switch(this.e.target.id){
+                case "modalBrushes":{
+                    this.activateModal(".inputBrushesModal.show")
                     break;
                 }
-            }
-            case "modalImages":{
-                const checkIfThisClassExists = document.querySelector(".inputImagesModal.show");
-                if(checkIfThisClassExists === null){
-                    this.showModal('.inputImagesModal')
-                    break;
-                }else{
-                    this.removeModal('.inputImagesModal')
+                case "modalColors":{
+                    this.activateModal(".inputColorsModal.show")
                     break;
                 }
-            }
-            case "modalFilters":{
-                const checkIfThisClassExists = document.querySelector(".inputFiltersModal.show");
-                if(checkIfThisClassExists === null){
-                    this.showModal('.inputFiltersModal')
-                    break;
-                }else{
-                    this.removeModal('.inputFiltersModal')
+                case "modalImages":{    
+                    this.activateModal(".inputImagesModal.show")
                     break;
                 }
-            }
+                case "modalFilters":{
+                    this.activateModal(".inputFiltersModal.show")
+                    break;
+                }
+            } 
         }
     }
 

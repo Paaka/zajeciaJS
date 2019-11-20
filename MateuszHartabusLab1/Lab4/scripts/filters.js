@@ -106,9 +106,6 @@ class Filter{
             reader.readAsDataURL(file);
             console.log(reader.result);
             img.src = reader.result;
-            
 
-            
-        
     }
 }

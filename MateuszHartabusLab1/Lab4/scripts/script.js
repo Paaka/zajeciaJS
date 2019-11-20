@@ -5,40 +5,7 @@ document.addEventListener("DOMContentLoaded",appStart);
 
 function appStart() {
     const myCanvas = new Draw('canvas');
-
-    document
-        .querySelector('#imageOne')
-        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
-
-    document
-        .querySelector('#imageTwo')
-        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
-
-    document
-        .querySelector('#imageThree')
-        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
-
-    document
-        .querySelector('#imageFour')
-        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
-
-    document
-        .querySelector("#modalBrushes")
-        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
-
-    document
-        .querySelector("#modalColors")
-        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
-
-    document
-        .querySelector("#modalImages")
-        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
-
-    document
-        .querySelector("#modalFilters")
-        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
-
-
+    
     document
         .querySelector('#inputRed')
         .addEventListener('change',(ev)=> new Filter('canvas', ev).redFilter());
@@ -78,13 +45,20 @@ function appStart() {
         .addEventListener('touchstart',(ev)=> new Filter('canvas', ev).chooseFilter());
 
     document
+        .querySelector('#images')
+        .addEventListener('touchstart',(ev)=> new Background(ev).chooseBackround());
+
+    document
         .querySelector('#saveImg')
-        .addEventListener('click',function(el) {
+        .addEventListener('click',function(e) {
 
             var image = canvas.toDataURL("image/jpg");
-            el.target.href = image;
+            e.target.href = image;
           })
-        
+
+    document
+    .querySelector('#modals')
+    .addEventListener('touchstart',(ev)=> new Modal(ev).chooseModal());
     const input = document.querySelector('#inputFile');
     input.addEventListener('change', function () {
         const reader = new FileReader();

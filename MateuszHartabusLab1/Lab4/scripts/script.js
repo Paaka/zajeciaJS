@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded",appStart);
 
-let ctx;
 
 
 function appStart() {
@@ -19,26 +18,10 @@ function appStart() {
     .addEventListener('change',(ev)=> new Filter('canvas', ev).blueFilter());
 
 
-        document
+    document
         .querySelector('#colorFromInput')
         .addEventListener('change',(e)=> myCanvas.chooseColor(e));
 
-   const input = document.querySelector('#inputFile');
-        
-   input.addEventListener('change',(e)=> {
-       const file = input.files[0];
-       const reader = new FileReader();
-       const img = new Image;
-       console.log(file);
-       reader.onload = () => {
-        img.src = reader.result;
-        console.log(img.src);
-        reader.readAsDataURL(file);
-       }
-        
-
-      document.body.appendChild(img);
-    });
 
     document
         .querySelector('#plus')
@@ -60,6 +43,21 @@ function appStart() {
         .querySelector('#filters')
         .addEventListener('touchstart',(ev)=> new Filter('canvas', ev).chooseFilter());
         
+    const input = document.querySelector('#inputFile');
+    input.addEventListener('change', function (e) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const img = new Image();
+            img.onload = function (){
+                const canvas = document.querySelector('#canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img,0,0)
+            }
+            img.src = reader.result;
+        }
+        reader.readAsDataURL(input.files[0])
+    }, false)
+    
 }
 
 

@@ -67,14 +67,12 @@ class Filter{
     }
 
     redFilter(){
-        console.log('??')
         const canvasData = this.ctx.getImageData(0,0, this.width, this.height);
 
         for(let i=0; i<canvasData.data.length;i+=4){
            this.red = this.info.target.value;
           canvasData.data[i] = this.info.target.value;
         }
-        console.log(this.info.target.value);
 
         this.ctx.putImageData(canvasData, 0,0)
     }
@@ -97,5 +95,20 @@ class Filter{
         }
 
         this.ctx.putImageData(canvasData, 0,0)
+    }
+
+    paintImage(e){
+            const file = this.info.target.files[0];
+            const  reader = new FileReader();
+            const img = new Image();
+            this.ctx.drawImage(img, 0, 0);
+            
+            reader.readAsDataURL(file);
+            console.log(reader.result);
+            img.src = reader.result;
+            
+
+            
+        
     }
 }

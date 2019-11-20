@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 document.addEventListener("DOMContentLoaded",appStart);
 
-
-
 function appStart() {
     const myCanvas = new Draw('canvas');
     
@@ -57,8 +55,10 @@ function appStart() {
           })
 
     document
-    .querySelector('#modals')
-    .addEventListener('touchstart',(ev)=> new Modal(ev).chooseModal());
+        .querySelector('#modals')
+        .addEventListener('click',(ev)=> new Modal(ev).chooseModal());
+
+
     const input = document.querySelector('#inputFile');
     input.addEventListener('change', function () {
         const reader = new FileReader();
@@ -75,9 +75,3 @@ function appStart() {
     }, false)
 
 }
-
-
-
-
-
-

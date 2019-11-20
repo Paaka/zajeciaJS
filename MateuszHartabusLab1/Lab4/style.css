@@ -18,10 +18,7 @@ body{
     background-color: #fff;
     width: 800px;
     height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    margin: 2rem;
+    margin: 20px;
     box-shadow: black 0 0 30px 5px;
 }
 
@@ -42,6 +39,39 @@ body{
     padding: 1rem;
     justify-content: flex-start;
     align-items: center;
+}
+
+.inputBrushes{
+    width: 100%;
+    background-color: royalblue;
+    cursor: pointer;
+}
+
+@keyframes showItem{
+    0%{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    60%{
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inputBrushesModal{
+    background-color: white;
+    display: none;
+    opacity: 0;
+    animation: showItem 1s;
+}
+
+.show{
+    display: inline-block;
+    opacity: 1;
+    animation: showItem 1s;
 }
 
 .inputs__brushes{

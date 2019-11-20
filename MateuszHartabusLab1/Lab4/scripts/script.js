@@ -7,16 +7,23 @@ function appStart() {
 
     document
         .querySelector('#imageOne')
-        .addEventListener('click', ()=>{
+        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
 
-            const canvas = document.querySelector('#canvas');
-            const ctx = canvas.getContext('2d');
-            const image = new Image();
-            image.src = "./img/autumn.jpg";
-            image.addEventListener('load', ()=>{
-                ctx.drawImage(image,0,0);
-            })
-        })
+    document
+        .querySelector('#imageTwo')
+        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
+
+    document
+        .querySelector('#imageThree')
+        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
+
+    document
+        .querySelector('#imageFour')
+        .addEventListener('click', (ev)=> new Background(ev).drawBackground());
+
+    document
+        .querySelector("#modalBrushes")
+        .addEventListener('click', (ev)=> new Modal(ev).activateModal())
 
     document
         .querySelector('#inputRed')

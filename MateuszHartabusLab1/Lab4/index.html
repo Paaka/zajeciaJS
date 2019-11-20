@@ -10,7 +10,10 @@
 <body>
 <div class="allItems">
  <div class="inputs">
-    <h2>Choose bursh :</h2>
+    <div id="modalBrushes" class="inputBrushes">
+        <h2 id="modalBrushes">Brushes</h2>
+    </div>
+    <div class="inputBrushesModal">
      <div id="brushes" class="inputs__brushes">
         <button id="square" class="inputs__brushes--item">&#9632;</button>
         <button id="circle" class="inputs__brushes--item">&#9679;</button>
@@ -23,6 +26,7 @@
             <p>Change Size</p>
             <button id="plus" class="inputs__size--btn">+</button>
         </div>
+    </div>    
     <h2>Choose color :</h2>
     <div id="colors" class="inputs__colors">
         <button id="red" value="red" class="inputs__colors--button red"></button>
@@ -44,7 +48,16 @@
     </div>
     <input id="inputFile" type="file">
     <div id="imageOne">
-        lol
+        Autumn
+    </div>
+    <div id="imageTwo">
+        Road
+    </div>
+    <div id="imageThree">
+        Sky
+    </div>
+    <div id="imageFour">
+        river
     </div>
     <div id="filters">
         <button id="darken" class="filters__btn">Darken</button>
@@ -56,9 +69,11 @@
 </div>
     <canvas id="canvas" width="800" height="600"></canvas>
 </div>
+    <script src="./scripts/background.js"></script>
     <script src="./scripts/brush.js"></script>
     <script src="./scripts/draw.js"></script>
     <script src="./scripts/filters.js"></script>
+    <script src="./scripts/modal.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 </html>

@@ -6,16 +6,29 @@ function appStart() {
     const myCanvas = new Draw('canvas');
 
     document
-    .querySelector('#inputRed')
-    .addEventListener('change',(ev)=> new Filter('canvas', ev).redFilter());
+        .querySelector('#imageOne')
+        .addEventListener('click', ()=>{
+
+            const canvas = document.querySelector('#canvas');
+            const ctx = canvas.getContext('2d');
+            const image = new Image();
+            image.src = "./img/autumn.jpg";
+            image.addEventListener('load', ()=>{
+                ctx.drawImage(image,0,0);
+            })
+        })
 
     document
-    .querySelector('#inputGreen')
-    .addEventListener('change',(ev)=> new Filter('canvas', ev).greenFilter());
+        .querySelector('#inputRed')
+        .addEventListener('change',(ev)=> new Filter('canvas', ev).redFilter());
 
     document
-    .querySelector('#inputBlue')
-    .addEventListener('change',(ev)=> new Filter('canvas', ev).blueFilter());
+        .querySelector('#inputGreen')
+        .addEventListener('change',(ev)=> new Filter('canvas', ev).greenFilter());
+
+    document
+        .querySelector('#inputBlue')
+        .addEventListener('change',(ev)=> new Filter('canvas', ev).blueFilter());
 
 
     document
@@ -57,7 +70,7 @@ function appStart() {
         }
         reader.readAsDataURL(input.files[0])
     }, false)
-    
+
 }
 
 

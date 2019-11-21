@@ -1,0 +1,16 @@
+.nav{
+    display: grid;
+    grid-template-columns: 1fr 10rem 10rem 10rem;
+    padding: 2rem;
+    border-bottom: 1px solid $colorOfBorder;
+    border-top: 1px solid $colorOfBorder;
+
+    button{
+        display: inline-block;
+    }
+
+    h1{
+        font-size: 3rem;
+        color: $primary;
+    }
+}

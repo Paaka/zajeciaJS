@@ -1,0 +1,33 @@
+.notes{
+    display: grid;
+    width: 80%;
+    margin:1.5rem auto 0;
+    grid-template-columns: repeat(4,1fr);
+    justify-items: center;
+    gap: 1rem;
+
+    &Item{
+        width:100%;
+        height: 100%;
+        margin: 1rem;
+        background-color: #eee;
+        border: 2px solid $colorOfBorder;
+        text-align: justify;
+        border-radius: 1rem;
+
+        &Title{
+            text-align: center;
+            font-size: 1.8rem;
+            color:#333;
+            padding-top: 5px; 
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+
+        &Para{
+            color:black;
+            font-size: 1.6rem;
+            padding: 1rem;
+        }
+    }
+}

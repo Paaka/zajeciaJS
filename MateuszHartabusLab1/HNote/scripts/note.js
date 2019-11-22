@@ -20,10 +20,13 @@ class Note{
         const pNode = document.createElement("p");
         const titleTextNode = document.createTextNode(item.title);
         const desTextNode = document.createTextNode(item.description);
+        h2Node.classList ="notesItemTitle";
+        pNode.classList="notesItemPara"
         h2Node.appendChild(titleTextNode);
         pNode.appendChild(desTextNode);
         DIVnode.appendChild(h2Node);
         DIVnode.appendChild(pNode);
+        DIVnode.classList ="notesItem";
         document.getElementById("notes").appendChild(DIVnode);
     }
 

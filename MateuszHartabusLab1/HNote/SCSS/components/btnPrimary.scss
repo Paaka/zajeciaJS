@@ -1,0 +1,16 @@
+.btnPrimary{
+    background-color: $secondary;
+    color:#eee;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    border: 2px solid #eee;
+    font-weight: 700;
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover{
+        border: 2px solid darken($secondary, 10%);
+        color:$secondary;
+        background-color: #eee;
+    }
+}

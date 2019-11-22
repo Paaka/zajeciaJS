@@ -17,8 +17,26 @@
     </div>
     <div class="main">
         <div id="starterWrapper" class="mainStarter" >Create Note...</div>
-        <div id="inputModal" class="mainInput"></div>
+        <div id="inputModal" class="mainInput">
+            <form id="mainForm" class="form">
+                <span id="formClose" class="formClosure formItemClosure">&#10006;</span>
+                <div class="formItem formItem1">
+                    <input id="title" placeholder=" " class="input" type="text">
+                    <label class="label" for="title">title</label>
+                    <div class="formItemBar"></div>
+                </div>
+                <div class="formItem formItem2">
+                    <textarea class="textarea" placeholder=" " id="description"></textarea>  
+                    <label class="label" for="description">description</label>
+                    <div class="formItemBar"></div>
+                </div>
+                <button id="formBtn" type="submit" class="btnPrimary formItemBtn">Add Note</button>
+                
+            </form>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./scripts/modal.js"></script>
+    <script src="./scripts/note.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

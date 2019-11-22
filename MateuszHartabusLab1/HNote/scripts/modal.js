@@ -1,12 +1,11 @@
-class Modal{
-    
-    activateModal(){
-    this.style.display = "none";
+export const activateModal  = function(){
+    document.querySelector('#starterWrapper').style.display = "none";
     document.querySelector('#inputModal').style.display = "block";
     }
 
-    disactivateModal(){
+export const  disactivateModal = function (){
         document.querySelector('#inputModal').style.display = "none";
         document.querySelector('#starterWrapper').style.display = "block";
+        document.querySelector('#mainForm').reset();
     }
-}
+

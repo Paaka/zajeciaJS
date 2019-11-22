@@ -1,0 +1,197 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #eee;
+}
+
+.btnPrimary {
+  background-color: #1e58ff;
+  color: #eee;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  border: 2px solid #eee;
+  font-weight: 700;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.btnPrimary:hover {
+  border: 2px solid #003cea;
+  color: #1e58ff;
+  background-color: #eee;
+}
+
+.nav {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 10rem 10rem 10rem;
+      grid-template-columns: 1fr 10rem 10rem 10rem;
+  padding: 2rem;
+  border-bottom: 1px solid #aaa;
+  border-top: 1px solid #aaa;
+}
+
+.nav button {
+  display: inline-block;
+}
+
+.nav h1 {
+  font-size: 3rem;
+  color: #1e58ff;
+}
+
+.main {
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+}
+
+.mainStarter {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 70%;
+  height: 5rem;
+  color: #666;
+  font-size: 2rem;
+  font-weight: 600;
+  border: 2px solid #aaa;
+  border-radius: 1rem;
+}
+
+.mainInput {
+  display: none;
+  margin: 0 auto;
+  width: 60%;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+}
+
+.form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 15rem;
+      grid-template-columns: 1fr 15rem;
+  -ms-grid-rows: min-content max-content max-content 50px;
+      grid-template-rows: -webkit-min-content -webkit-max-content -webkit-max-content 50px;
+      grid-template-rows: min-content max-content max-content 50px;
+}
+
+.formClosure {
+  color: #eee;
+  background-color: #1e58ff;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
+.formItem {
+  width: 70%;
+  margin: 2rem auto;
+  position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-right: 5rem;
+}
+
+.formItem1 {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/span 2;
+}
+
+.formItem2 {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/span 2;
+}
+
+.formItemBtn {
+  -ms-grid-column: 3;
+  grid-column: 3/3;
+  -ms-grid-row: 4;
+  grid-row: 4/4;
+  margin-right: 2rem;
+}
+
+.formItemClosure {
+  -ms-grid-column: 3;
+  grid-column: 3/3;
+  -ms-grid-row: 1;
+  grid-row: 1/1;
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.formItemBar {
+  width: 100%;
+  height: 2px;
+  background: #7d7d7d;
+  -webkit-transition: 0.1s all;
+  transition: 0.1s all;
+}
+
+.label {
+  color: #7d7d7d;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  -webkit-transition: 0.2s ease-out all;
+  transition: 0.2s ease-out all;
+  font-size: 16px;
+}
+
+.input,
+.textarea {
+  color: #7d7d7d;
+  font-size: 16px;
+  border: none;
+  line-height: 22px;
+  width: 100%;
+  background: none;
+}
+
+.textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+}
+
+.input:focus + .label,
+.textarea:focus + .label {
+  top: -22px;
+  font-size: 13px;
+}
+
+.input:not(:placeholder-shown) + .label,
+.textarea:not(:placeholder-shown) + .label {
+  top: -22px;
+  font-size: 13px;
+}
+
+.input:focus ~ .formItemBar,
+.textarea:focus ~ .formItemBar {
+  background: #1e58ff;
+}
+/*# sourceMappingURL=main.css.map */

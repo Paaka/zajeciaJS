@@ -25,6 +25,31 @@
         border-radius: 5px;
     }
 }
+.palete{
+  width:3rem;
+  grid-row: 4;
+  grid-column: 2;
+  position: relative;
+  display: inline;
+
+  &Content{
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    background-color: red;
+  }
+
+  &:hover {
+    cursor: pointer;
+   
+  }
+}
+
+.example:hover .paleteContnet{
+  display: block;
+}
 .form{
     display: grid;
     grid-template-columns: 1fr 15rem;

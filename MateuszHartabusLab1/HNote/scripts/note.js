@@ -1,9 +1,11 @@
 import {disactivateModal} from './modal.js';
+import {getTime} from "./date.js";
 
 class Note{
     constructor(title = "Note without title"){
         this.title = title;
         this.des = " ";
+        this.time = getTime();
     }
 
     getNote(){
@@ -32,13 +34,18 @@ class Note{
 
     addNote(e){   
             e.preventDefault();
-            const note = this.createNote();
-            localStorage.setItem(`note-${this.generateKey()}`,JSON.stringify(note));
-            this.getNote();
+            const note = this.assignValuesToNote();
+            localStorage.setItem(`note-${this.generateRandomKey()}`,JSON.stringify(note));
+            this.updateNote(note)
             disactivateModal();
     }
 
-    createNote(){
+    updateNote(item){
+        this.createElementForHtml(item);
+    }
+
+    assignValuesToNote(){
+        console.log(this.time)
         this.title = document.querySelector('#title').value;
         this.des = document.querySelector('#description').value;
         return {
@@ -47,7 +54,7 @@ class Note{
         }
     }
 
-    generateKey(){
+    generateRandomKey(){
         const length = localStorage.length;
         const random = Math.floor(Math.random()*1000);
         return `${length}${random}`

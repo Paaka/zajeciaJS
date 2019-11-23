@@ -14,6 +14,7 @@
         border: 2px solid $colorOfBorder;
         text-align: justify;
         border-radius: 1rem;
+        animation: show .5s ease-out;
 
         &Title{
             text-align: center;
@@ -29,5 +30,12 @@
             font-size: 1.6rem;
             padding: 1rem;
         }
+
+        &Red{
+            @extend .notesItem;
+            background-color: red;
+        }
     }
+
+
 }

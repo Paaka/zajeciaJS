@@ -98,6 +98,8 @@ class Filter{
         this.ctx.putImageData(canvasData, 0,0)
     }
 
+    
+
     paintImage(e){
             const file = this.info.target.files[0];
             const  reader = new FileReader();

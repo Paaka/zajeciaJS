@@ -5,6 +5,7 @@ class Filter{
         this.height = this.canvas.height;
         this.width = this.canvas.width;
         this.info = e;
+        this.blurRadius = 3;
         //
 
         this.red = 0;

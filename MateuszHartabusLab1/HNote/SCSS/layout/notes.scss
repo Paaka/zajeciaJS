@@ -34,7 +34,9 @@
         &Red{
             @extend .notesItem;
             background-color: red;
+            border: 2px solid lighten(red, 20%)
         }
+
     }
 
 

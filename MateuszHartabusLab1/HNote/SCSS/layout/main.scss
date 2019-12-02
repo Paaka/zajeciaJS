@@ -25,29 +25,72 @@
         border-radius: 5px;
     }
 }
+
+.example{
+  width: 30px;
+  grid-column: 2;
+  grid-row: 4/4;
+  margin-top: 1rem;
+}
+
 .palete{
   width:3rem;
-  grid-row: 4;
-  grid-column: 2;
   position: relative;
-  display: inline;
 
   &Content{
     display: none;
     position: absolute;
     width: 100px;
-    height: 100px;
+    min-height: 100px;
     z-index: 1;
-    background-color: red;
-  }
-
-  &:hover {
-    cursor: pointer;
+    background-color: #eee;
+    border: 2px solid $colorOfBorder;
+    border-radius: 3px;
+    font-size: 1.4rem;
    
+    
+    :not(:last-child){
+      margin-bottom: 2px;
+    }
+
+    &Item{
+      width: 98%;
+      margin: 0 auto;
+      height: 2rem;
+      text-align: center;
+      cursor: pointer;
+    }
   }
 }
 
-.example:hover .paleteContnet{
+.red{
+  background-color: $redNoteBg;
+  border: 2px solid $redNoteBorder;
+  border-radius: 4px;
+}
+
+.green{
+  background-color: $greenNoteBg;
+  border: 2px solid $greenNoteBorder;
+  border-radius: 4px;
+}
+
+.blue{
+  background-color: $blueNoteBg;
+  border: 2px solid $blueNoteBorder;
+  border-radius: 4px;
+}
+.dark{
+  border: 2px solid #333;
+  color:#eee;
+  background-color: $darkNoteBg;
+  border-radius:4px;
+}
+.white{
+  border: 2px solid $colorOfBorder;
+  border-radius: 4px;
+}
+.example:hover .paleteContent{
   display: block;
 }
 .form{
@@ -63,6 +106,7 @@
         text-align: center;
         padding-top: 3px;
         cursor: pointer;
+        border-radius: 3px;
     }
 }
 

@@ -17,19 +17,34 @@ class Note{
     }
 
     createElementForHtml(item){
+        const note = this.createForHtmlStructureNote(item);
+        document.getElementById("notes").appendChild(note);
+    }
+
+    createForHtmlStructureNote(item){
         const DIVnode = document.createElement("DIV");
-        const h2Node = document.createElement("h2");
-        const pNode = document.createElement("p");
-        const titleTextNode = document.createTextNode(item.title);
-        const desTextNode = document.createTextNode(item.description);
-        h2Node.classList ="notesItemTitle";
-        pNode.classList="notesItemPara"
-        h2Node.appendChild(titleTextNode);
-        pNode.appendChild(desTextNode);
-        DIVnode.appendChild(h2Node);
-        DIVnode.appendChild(pNode);
+        const title = this.createHtmlStructureForNoteTitle(item.title);
+        const description = this.createHtmlStructureForNoteParagraph(item.description)
+        DIVnode.appendChild(title);
+        DIVnode.appendChild(description);
         DIVnode.classList ="notesItem";
-        document.getElementById("notes").appendChild(DIVnode);
+        return DIVnode;
+    }
+
+    createHtmlStructureForNoteTitle(title){
+        const h2Node = document.createElement("h2");
+        const titleTextNode = document.createTextNode(title);
+        h2Node.classList ="notesItemTitle";
+        h2Node.appendChild(titleTextNode);
+        return h2Node;
+    }
+
+    createHtmlStructureForNoteParagraph(description){
+        const pNode = document.createElement("p");     
+        const desTextNode = document.createTextNode(description);     
+        pNode.classList="notesItemPara"  
+        pNode.appendChild(desTextNode);
+        return  pNode;
     }
 
     addNote(e){   

@@ -1,11 +1,14 @@
 import {disactivateModal} from './modal.js';
 import {getTime} from "./date.js";
+import Colors from "./colors/colors.js";
 
 class Note{
-    constructor(title = "Note without title"){
-        this.title = title;
+    constructor(){
+        this.title = "Note without title";
         this.des = " ";
         this.time = getTime();
+        this.style = "white";
+        this.Color = new Colors();
     }
 
     getNote(){
@@ -21,13 +24,21 @@ class Note{
         document.getElementById("notes").appendChild(note);
     }
 
+    generateStyleOfNote(item){
+        let additionalStyle = "";
+        if('style' in  item){
+            additionalStyle = this.style;
+        }
+        return "notesItem " + additionalStyle;
+    }
+
     createForHtmlStructureNote(item){
         const DIVnode = document.createElement("DIV");
         const title = this.createHtmlStructureForNoteTitle(item.title);
         const description = this.createHtmlStructureForNoteParagraph(item.description)
         DIVnode.appendChild(title);
         DIVnode.appendChild(description);
-        DIVnode.classList ="notesItem";
+        DIVnode.classList =this.generateStyleOfNote(item);
         return DIVnode;
     }
 
@@ -58,14 +69,20 @@ class Note{
     updateNote(item){
         this.createElementForHtml(item);
     }
+    setNoteColor(){
+        const colorsArray = this.Color.checkState();
+        const colorsObj = colorsArray[0].id;
+        return colorsObj;
+    }
 
     assignValuesToNote(){
-        console.log(this.time)
         this.title = document.querySelector('#title').value;
         this.des = document.querySelector('#description').value;
+        this.style = this.setNoteColor();
         return {
             title: this.title,
             description: this.des,
+            style:this.style,
         }
     }
 

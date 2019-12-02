@@ -1,0 +1,32 @@
+export const colorsState = [
+    {
+        id:"white",
+        active:false,
+        bgColor:"#eee",
+        borderColor:"#aaa",
+    },
+    {
+        id:"dark",
+        active:false,
+        bgColor:"#3d3d3d",
+        borderColor:"#aaa",
+    },
+    {   
+        id:"red",
+        active:false,
+        bgColor:"#ff4040",
+        borderColor:"#990000",
+    },
+    {
+        id:"green",
+        active:true,
+        bgColor:"#57e857",
+        borderColor:"#128712",
+    },
+    {
+        id:"blue",
+        active:false,
+        bgColor:"#8282ff",
+        borderColor:"#0000bd",
+    },
+]

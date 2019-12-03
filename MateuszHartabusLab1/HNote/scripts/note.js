@@ -15,7 +15,7 @@ class Note{
         for(let i=0;i<localStorage.length;i++){
             const key =localStorage.key(i);
             const item = JSON.parse(localStorage.getItem(key));
-            this.createElementForHtml(item);
+            this.createElementForHtml(item, key);
         }
     }
 
@@ -35,10 +35,12 @@ class Note{
 
     createForHtmlStructureNote(item){
         const DIVnode = document.createElement("DIV");
+        const hover = this.createHtmlStructureForHover();
         const title = this.createHtmlStructureForNoteTitle(item.title);
         const description = this.createHtmlStructureForNoteParagraph(item.description)
         DIVnode.appendChild(title);
         DIVnode.appendChild(description);
+        DIVnode.appendChild(hover);
         DIVnode.classList =this.generateStyleOfNote(item);
         return DIVnode;
     }
@@ -49,6 +51,22 @@ class Note{
         h2Node.classList ="notesItemTitle";
         h2Node.appendChild(titleTextNode);
         return h2Node;
+    }
+
+    createHtmlStructureForHover(){
+        const hover = document.createElement("DIV");
+        const signX = this.CreateHtmlStructureForClosure();
+        hover.classList ="notesItemParagraph";
+        hover.appendChild(signX);
+        return hover;
+    }
+
+    CreateHtmlStructureForClosure(){
+        const X = document.createElement("span");
+        const titleTextNode = document.createTextNode("×");
+        X.classList ="notesItemParagraphClosure";
+        X.appendChild(titleTextNode);
+        return X;
     }
 
     createHtmlStructureForNoteParagraph(description){
@@ -96,3 +114,4 @@ class Note{
 }
 
 export default Note;
+

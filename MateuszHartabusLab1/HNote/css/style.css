@@ -42,6 +42,8 @@ html {
   justify-items: center;
   gap: 1rem; }
   .notesItem, .notesItemRed {
+    display: grid;
+    grid-template-rows: 25px 1fr 30px;
     width: 100%;
     height: 100%;
     margin: 1rem;
@@ -51,6 +53,7 @@ html {
     border-radius: 1rem;
     animation: show .5s ease-out; }
     .notesItemTitle {
+      grid-row: 1;
       text-align: center;
       font-size: 1.8rem;
       color: #333;
@@ -58,12 +61,22 @@ html {
       margin-bottom: 3px;
       font-weight: 700; }
     .notesItemPara {
+      grid-row: 2;
       color: black;
       font-size: 1.6rem;
       padding: 1rem; }
+    .notesItemParagraph {
+      grid-row: 3;
+      display: none;
+      align-self: flex-end; }
+      .notesItemParagraphClosure {
+        font-size: 3rem;
+        cursor: pointer; }
     .notesItemRed {
       background-color: red;
       border: 2px solid #ff6666; }
+    .notesItem:hover .notesItemParagraph, .notesItemRed:hover .notesItemParagraph {
+      display: flex; }
 
 .nav {
   display: grid;

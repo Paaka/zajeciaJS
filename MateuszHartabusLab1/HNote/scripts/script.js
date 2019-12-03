@@ -21,7 +21,14 @@ function appStart(){
     
     document
         .querySelector('#colorsParent')
-        .addEventListener('click', (e)=>new Color().changeColor(e))     
+        .addEventListener('click', (e)=>new Color().changeColor(e))    
+    
+        document.querySelectorAll('.notesItem').forEach(item => {
+            item.addEventListener('click', event => {
+              console.log(event.composedPath()[0]);
+              
+            })
+          })
 }
 
 

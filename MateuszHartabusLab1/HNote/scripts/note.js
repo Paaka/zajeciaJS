@@ -7,7 +7,7 @@ class Note{
         this.title = "Note without title";
         this.des = " ";
         this.time = getTime();
-        this.style = "white";
+        this.style = "";
         this.Color = new Colors();
     }
 
@@ -24,11 +24,12 @@ class Note{
         document.getElementById("notes").appendChild(note);
     }
 
-    generateStyleOfNote(item){
+    generateStyleOfNote(item){  
         let additionalStyle = "";
-        if('style' in  item){
-            additionalStyle = this.style;
+        if(item.style != undefined || item.style == "white"){
+            additionalStyle = item.style;
         }
+           
         return "notesItem " + additionalStyle;
     }
 
@@ -79,6 +80,7 @@ class Note{
         this.title = document.querySelector('#title').value;
         this.des = document.querySelector('#description').value;
         this.style = this.setNoteColor();
+        this.Color.setStateToDefault();
         return {
             title: this.title,
             description: this.des,

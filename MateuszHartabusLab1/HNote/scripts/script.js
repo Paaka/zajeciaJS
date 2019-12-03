@@ -1,4 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
+import Color from './colors/colors.js'
 import Note from './note.js'
 document.addEventListener("DOMContentLoaded",appStart);
 
@@ -16,7 +17,11 @@ function appStart(){
     //Note listeners
     document
         .querySelector('#formBtn')
-        .addEventListener('click',(e) => new Note().addNote(e))      
+        .addEventListener('click',(e) => new Note().addNote(e)) 
+    
+    document
+        .querySelector('#colorsParent')
+        .addEventListener('click', (e)=>new Color().changeColor(e))     
 }
 
 

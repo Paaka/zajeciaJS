@@ -1,7 +1,7 @@
 export const colorsState = [
     {
         id:"white",
-        active:false,
+        active:true,
         bgColor:"#eee",
         borderColor:"#aaa",
     },
@@ -19,7 +19,7 @@ export const colorsState = [
     },
     {
         id:"green",
-        active:true,
+        active:false,
         bgColor:"#57e857",
         borderColor:"#128712",
     },

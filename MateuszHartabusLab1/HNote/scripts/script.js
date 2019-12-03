@@ -1,6 +1,6 @@
 import  {activateModal, disactivateModal} from './modal.js';
 import Color from './colors/colors.js'
-import Note from './note.js'
+import Note from './notes/note.js'
 document.addEventListener("DOMContentLoaded",appStart);
 
 function appStart(){
@@ -25,7 +25,10 @@ function appStart(){
     
         document.querySelectorAll('.notesItem').forEach(item => {
             item.addEventListener('click', event => {
-              console.log(event.composedPath()[0]);
+              if(event.path[0].id == "Closure"){
+                  const keyOfCurrentItem = event.path[2].myKey;
+                  localStorage.removeItem(keyOfCurrentItem);
+              }
               
             })
           })

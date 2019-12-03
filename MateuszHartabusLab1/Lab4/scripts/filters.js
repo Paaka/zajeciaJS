@@ -98,6 +98,29 @@ class Filter{
         this.ctx.putImageData(canvasData, 0,0)
     }
 
+    gBlur(blur) {
+		blur = blur || this.blurRadius;	
+		let sum = 0;
+		let delta = 5;
+		let alpha_left = 1 / (2 * Math.PI * delta * delta);
+		let step = blur < 3 ? 1 : 2;
+		for (let y = -blur; y <= blur; y += step) {
+			for (let x = -blur; x <= blur; x += step) {
+				let weight = alpha_left * Math.exp(-(x * x + y * y) / (2 * delta * delta));
+				sum += weight;
+			}
+		}
+		let count = 0;
+		for (let y = -blur; y <= blur; y += step) {
+			for (let x = -blur; x <= blur; x += step) {
+				count++;
+				this.ctx.globalAlpha = alpha_left * Math.exp(-(x * x + y * y) / (2 * delta * delta)) / sum * blur;
+				this.ctx.drawImage(this.canvas,x,y);
+			}
+		}
+		this.ctx.globalAlpha = 1;
+	}
+
     
 
     paintImage(e){

@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded",appStart);
 function appStart() {
     const myCanvas = new Draw('canvas');
     
-    document.querySelector("#g_blur").addEventListener("click", (ev)=> new Filter('canvas', ev).redFilter());
+    document
+        .querySelector("#g_blur")
+        .addEventListener("click", (ev)=> new Filter('canvas', ev).gBlur(3));
 
     document
         .querySelector('#inputRed')

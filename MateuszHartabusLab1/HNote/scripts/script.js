@@ -1,4 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
+import {updateValue, deleteItem} from './eventFunctions.js'
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 document.addEventListener("DOMContentLoaded",appStart);
@@ -22,32 +23,43 @@ function appStart(){
     document
         .querySelector('#colorsParent')
         .addEventListener('click', (e)=>new Color().changeColor(e));
+
+
+const targetNode = document.getElementById('notes');
+const config = { attributes: true, childList: true, subtree: true };
+
+const callback = function(mutationsList, observer) {
+
+    for(let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            document.querySelectorAll('.notesItem').forEach(item => {
+                item.addEventListener('click', deleteItem)
+            })
+
+            document.querySelectorAll('.notesItem').forEach(item => {
+                item
+                .querySelector('#textArea')
+                .addEventListener('input', updateValue)
+            })
+        }
+    }
+};
+
+const observer = new MutationObserver(callback);
+
+observer.observe(targetNode, config);
         
-    document.querySelectorAll('.notesItem').forEach(item => {
-        item.addEventListener('click', event => {
-            if(event.path[0].id == "Closure"){
-                const keyOfCurrentItem = event.path[2].myKey;
-                localStorage.removeItem(keyOfCurrentItem);
-                document.querySelector('#notes').removeChild(event.path[2]);
-            }
-        })
+  document.querySelectorAll('.notesItem').forEach(item => {
+        item.addEventListener('click', deleteItem);
     })
 
-    document.querySelectorAll('.notesItem').forEach(item => {
-        console.log(item.querySelector('#textArea').value);
-        item
-        .querySelector('#textArea')
-        .addEventListener('input', event => {
-      
-            if(event.path[0].id == "textArea"){
-                const value = event.path[0].value;
-                const keyOfCurrentItem = event.path[1].myKey;
-                const getItem = JSON.parse(localStorage.getItem(keyOfCurrentItem));
-                getItem.description = value;
-                localStorage.setItem(keyOfCurrentItem,JSON.stringify(getItem));  
-            }
-        })
-    })
+    document
+        .querySelectorAll('.notesItem')
+        .forEach(item => {
+            item
+                .querySelector('#textArea')
+                .addEventListener('input', updateValue )
+            })
 }
 
 

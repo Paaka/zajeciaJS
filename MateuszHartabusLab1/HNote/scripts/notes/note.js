@@ -35,13 +35,10 @@ class Note{
     addNote(e){   
             e.preventDefault();
             const note = this.assignValuesToNote();
-            localStorage.setItem(`note-${this.generateRandomKey()}`,JSON.stringify(note));
-            this.updateNote(note)
+            const key = `note-${this.generateRandomKey()}`
+            localStorage.setItem(key,JSON.stringify(note));
+            this.createElementForHtml(note,key);
             disactivateModal();
-    }
-
-    updateNote(item){
-        this.createElementForHtml(item);
     }
     setNoteColor(){
         const colorsArray = this.Color.checkState();

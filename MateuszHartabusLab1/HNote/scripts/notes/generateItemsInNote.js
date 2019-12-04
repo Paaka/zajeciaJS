@@ -38,10 +38,12 @@ class generateItemsInNote{
     }
 
     createHtmlStructureForNoteParagraph(description){
-        const pNode = document.createElement("p");     
-        const desTextNode = document.createTextNode(description);     
-        pNode.classList="notesItemPara"  
-        pNode.appendChild(desTextNode);
+        const pNode = document.createElement("textarea");     
+        pNode.value = description;
+        //const desTextNode = document.createTextNode(description);     
+        pNode.classList="notesItemText"  
+        pNode.id="textArea" 
+      
         return  pNode;
     }
 

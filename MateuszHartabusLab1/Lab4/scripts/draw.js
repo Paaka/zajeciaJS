@@ -7,14 +7,39 @@ class Draw{
         this.color = "black";
         this.brushShape = 'square';
         this.size = 10;
+        this.isClicked = false;
 
         this.canvas.addEventListener('touchmove',(e)=> this.paintOnCavas(e));
+        this.canvas.addEventListener('mousemove',(e)=> this.drag(e));
+        this.canvas.addEventListener('mousedown',(e)=> this.dragStart(e));
+        this.canvas.addEventListener('mouseup',(e)=> this.dragEnd(e));
     }
 
-    paintOnCavas(e) {
+    drag(e){   
+       if(this.isClicked === true){
+            this.getCanvasCordinates(e)
+       }
+    }
+
+    dragStart(){
+        this.isClicked = true;
+    }
+    
+    dragEnd(){
+        this.isClicked = false;
+    }
+
+    getCanvasCordinates(e){
+        let x = e.clientX - this.canvas.getBoundingClientRect().left;
+        let y = e.clientY - this.canvas.getBoundingClientRect().top;   
+        const brush = new Brush(this.brushShape);
+        this.brushShape = brush.getBrush();
+        this.drawShape(x,y); 
+    }
+
+    paintOnCavas(e){
         const X = e.touches[0].clientX - this.canvas.offsetLeft;
-        const Y = e.touches[0].clientY - this.canvas.offsetTop;
-        
+        const Y = e.touches[0].clientY - this.canvas.offsetTop;  
         const brush = new Brush(this.brushShape);
         this.brushShape = brush.getBrush();
         this.drawShape(X,Y);       

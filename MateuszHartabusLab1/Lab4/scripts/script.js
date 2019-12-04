@@ -36,19 +36,19 @@ function appStart() {
 
     document
         .querySelector('#brushes')
-        .addEventListener('touchstart',(e)=> myCanvas.chooseBrush(e))
+        .addEventListener('click',(e)=> myCanvas.chooseBrush(e))
         
     document
         .querySelector('#colors')
-        .addEventListener('touchstart',(e)=> myCanvas.chooseColor(e));
+        .addEventListener('click',(e)=> myCanvas.chooseColor(e));
 
     document
         .querySelector('#filters')
-        .addEventListener('touchstart',(ev)=> new Filter('canvas', ev).chooseFilter());
+        .addEventListener('click',(ev)=> new Filter('canvas', ev).chooseFilter());
 
     document
         .querySelector('#images')
-        .addEventListener('touchstart',(ev)=> new Background(ev).chooseBackround());
+        .addEventListener('click',(ev)=> new Background(ev).chooseBackround());
 
     document
         .querySelector('#saveImg')

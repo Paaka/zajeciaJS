@@ -33,9 +33,15 @@
   margin-top: 1rem;
 }
 
+.pin{
+  width:30px;
+}
+
 .palete{
   width:3rem;
-  position: relative;
+  grid-column: 2;
+  grid-row: 4/4;
+  margin-top: 1rem;
 
   &Content{
     display: none;

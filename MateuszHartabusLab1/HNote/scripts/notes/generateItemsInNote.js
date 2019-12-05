@@ -18,6 +18,7 @@ class generateItemsInNote{
         DIVnode.appendChild(hover);
         DIVnode.classList =this.generateStyleOfNote(item);
         DIVnode.myKey = key;
+        DIVnode.isPinned = item.isPinned;
         return DIVnode;
     }
 

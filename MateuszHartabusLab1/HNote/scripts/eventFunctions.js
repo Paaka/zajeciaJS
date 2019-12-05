@@ -11,7 +11,16 @@ export const updateValue = event => {
 export const deleteItem = event => {
     if(event.path[0].id == "Closure"){
         const keyOfCurrentItem = event.path[2].myKey;
+        const isPinned = event.path[2].isPinned;
         localStorage.removeItem(keyOfCurrentItem);
-        document.querySelector('#notes').removeChild(event.path[2]);
+        removeItemFromProperParent(isPinned);
     }
+}
+
+const removeItemFromProperParent = isPinned =>{
+    if(isPinned){
+        document.querySelector('#notesPinned').removeChild(event.path[2]);
+    }else{
+        document.querySelector('#notes').removeChild(event.path[2]);
+    } 
 }

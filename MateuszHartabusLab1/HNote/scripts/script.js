@@ -28,33 +28,8 @@ function appStart(){
     document
         .querySelector('#pin')
         .addEventListener('click', (e)=>new Pin().togglePinState(e));
-
-
-const targetNode = document.getElementById('notes');
-const config = { attributes: true, childList: true, subtree: true };
-
-const callback = function(mutationsList) {
-
-    for(let mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-            document.querySelectorAll('.notesItem').forEach(item => {
-                item.addEventListener('click', deleteItem)
-            })
-
-            document.querySelectorAll('.notesItem').forEach(item => {
-                item
-                .querySelector('#textArea')
-                .addEventListener('input', updateValue)
-            })
-        }
-    }
-};
-
-const observer = new MutationObserver(callback);
-
-observer.observe(targetNode, config);
         
-  document.querySelectorAll('.notesItem').forEach(item => {
+    document.querySelectorAll('.notesItem').forEach(item => {
         item.addEventListener('click', deleteItem);
     })
 
@@ -65,6 +40,31 @@ observer.observe(targetNode, config);
                 .querySelector('#textArea')
                 .addEventListener('input', updateValue )
             })
+
+    const targetNode = document.getElementById('notes');
+    const Pinned = document.getElementById('notesPinned');
+    const config = { attributes: true, childList: true, subtree: true };
+
+    const callback = function(mutationsList) {
+        for(let mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+            document.querySelectorAll('.notesItem').forEach(item => {
+                    item.addEventListener('click', deleteItem)
+                })
+            document.querySelectorAll('.notesItem').forEach(item => {
+                item
+                .querySelector('#textArea')
+                .addEventListener('input', updateValue)
+            })
+        }
+        }
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
+    
+    const observerForPinnedNotes = new MutationObserver(callback);
+    observerForPinnedNotes.observe(Pinned, config);
 }
 
 

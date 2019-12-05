@@ -2,6 +2,7 @@ import {disactivateModal} from '../modal.js';
 import {getTime} from "../date.js";
 import Structure from "./generateItemsInNote.js"
 import Colors from "../colors/colors.js";
+import Pin from "../pins/pin.js"
 
 class Note{
     constructor(){
@@ -10,6 +11,7 @@ class Note{
         this.time = getTime();
         this.style = "";
         this.Color = new Colors();
+        this.Pin = new Pin();
         this.Structure = Structure;
     }
 
@@ -22,12 +24,18 @@ class Note{
             this.title = item.title;
             this.des = item.description;
             this.style =item.style;
+            this.isPinned = item.isPinned;
         }
     }
 
     createElementForHtml(item, key){
         const note = new Structure().createForHtmlStructureNote(item ,key);
-        document.getElementById("notes").appendChild(note);
+        if(item.isPinned){
+            document.getElementById("notesPinned").appendChild(note);
+        }else{
+            document.getElementById("notes").appendChild(note);
+        }
+       
     }
 
     
@@ -50,11 +58,13 @@ class Note{
         this.title = document.querySelector('#title').value;
         this.des = document.querySelector('#description').value;
         this.style = this.setNoteColor();
+        this.isPinned = this.Pin.checkFormPinStateAndSetToDefault();
         this.Color.setStateToDefault();
         return {
             title: this.title,
             description: this.des,
             style:this.style,
+            isPinned: this.isPinned,
         }
     }
 

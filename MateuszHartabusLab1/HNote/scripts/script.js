@@ -1,7 +1,8 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem} from './eventFunctions.js'
+import {updateValue, deleteItem} from './eventFunctions.js';
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
+import Pin from './pins/pin.js';
 document.addEventListener("DOMContentLoaded",appStart);
 
 function appStart(){
@@ -23,12 +24,16 @@ function appStart(){
     document
         .querySelector('#colorsParent')
         .addEventListener('click', (e)=>new Color().changeColor(e));
+    
+    document
+        .querySelector('#pin')
+        .addEventListener('click', (e)=>new Pin().togglePinState(e));
 
 
 const targetNode = document.getElementById('notes');
 const config = { attributes: true, childList: true, subtree: true };
 
-const callback = function(mutationsList, observer) {
+const callback = function(mutationsList) {
 
     for(let mutation of mutationsList) {
         if (mutation.type === 'childList') {

@@ -115,12 +115,16 @@ html {
 
 .example {
   width: 30px;
-  grid-column: 2;
+  grid-column: 2/2;
   grid-row: 4/4;
-  margin-top: 1rem; }
+  align-self: center; }
 
 .pin {
-  width: 30px; }
+  width: 30px;
+  grid-column: 3/3;
+  grid-row: 4/4;
+  align-self: center;
+  margin-top: 4px; }
 
 .palete {
   width: 3rem;
@@ -176,7 +180,7 @@ html {
 
 .form {
   display: grid;
-  grid-template-columns: 1fr 15rem;
+  grid-template-columns: 1fr 3rem 3rem 10rem;
   grid-template-rows: min-content max-content max-content 50px; }
   .formClosure {
     color: #eee;
@@ -195,15 +199,15 @@ html {
   flex-shrink: 0;
   margin-right: 5rem; }
   .formItem1 {
-    grid-column: 1/span 2; }
+    grid-column: 1/span 4; }
   .formItem2 {
-    grid-column: 1/span 2; }
+    grid-column: 1/span 4; }
   .formItemBtn {
-    grid-column: 3/3;
+    grid-column: 5/5;
     grid-row: 4/4;
     margin-right: 2rem; }
   .formItemClosure {
-    grid-column: 3/3;
+    grid-column: 5/5;
     grid-row: 1/1;
     justify-self: end; }
 

@@ -6,6 +6,7 @@ export const activateModal  = function(){
 export const  disactivateModal = function (){
         document.querySelector('#inputModal').style.display = "none";
         document.querySelector('#starterWrapper').style.display = "block";
+        document.querySelector('#mainForm').className = "form ";
         document.querySelector('#mainForm').reset();
     }
 

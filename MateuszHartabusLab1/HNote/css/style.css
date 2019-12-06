@@ -124,7 +124,11 @@ html {
   grid-column: 3/3;
   grid-row: 4/4;
   align-self: center;
-  margin-top: 4px; }
+  margin-top: 4px;
+  cursor: pointer;
+  opacity: 0.7; }
+  .pin:hover {
+    opacity: 1; }
 
 .palete {
   width: 3rem;

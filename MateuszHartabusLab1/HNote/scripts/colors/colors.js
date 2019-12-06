@@ -22,6 +22,7 @@ class Colors {
         if(e.target !== e.currentTarget){
             this.setAllItemsInStateOfColorsToFalse();
             this.chooseColor(e.target.id);
+            this.changeFormColor(e.target.id);
         }
         e.stopPropagation();
     }
@@ -49,6 +50,16 @@ class Colors {
                 break;
             }
         }
+    }
+
+    changeFormColor(color){
+         const currentClass = this.generateStyleOfForm(color);
+        document.querySelector('#mainForm').className = currentClass;
+    }
+
+    generateStyleOfForm(id){  
+        let additionalStyle = id;
+        return "form " + additionalStyle;
     }
 
 

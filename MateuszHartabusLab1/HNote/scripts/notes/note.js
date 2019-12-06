@@ -38,8 +38,6 @@ class Note{
        
     }
 
-    
-
     addNote(e){   
             e.preventDefault();
             const note = this.assignValuesToNote();

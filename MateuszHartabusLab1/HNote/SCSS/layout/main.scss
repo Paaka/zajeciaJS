@@ -55,6 +55,37 @@
   grid-column: 2;
   grid-row: 4/4;
   margin-top: 1rem;
+  opacity: 0.7;
+
+  &Content{
+    display: none;
+    position: absolute;
+    width: 100px;
+    min-height: 100px;
+    z-index: 1;
+    background-color: #eee;
+    border: 2px solid $colorOfBorder;
+    border-radius: 3px;
+    font-size: 1.4rem;
+   
+    
+    :not(:last-child){
+      margin-bottom: 2px;
+    }
+
+    &Item{
+      width: 98%;
+      margin: 0 auto;
+      height: 2rem;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+
+.palete2{
+  @extend .palete;
+  width: 2rem;
 
   &Content{
     display: none;
@@ -110,6 +141,10 @@
   border-radius: 4px;
 }
 .example:hover .paleteContent{
+  display: block;
+}
+
+.example:hover .palete2Content{
   display: block;
 }
 .form{

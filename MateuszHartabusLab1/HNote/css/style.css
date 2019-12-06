@@ -130,11 +130,12 @@ html {
   .pin:hover {
     opacity: 1; }
 
-.palete {
+.palete, .palete2 {
   width: 3rem;
   grid-column: 2;
   grid-row: 4/4;
-  margin-top: 1rem; }
+  margin-top: 1rem;
+  opacity: 0.7; }
   .paleteContent {
     display: none;
     position: absolute;
@@ -148,6 +149,27 @@ html {
     .paleteContent :not(:last-child) {
       margin-bottom: 2px; }
     .paleteContentItem {
+      width: 98%;
+      margin: 0 auto;
+      height: 2rem;
+      text-align: center;
+      cursor: pointer; }
+
+.palete2 {
+  width: 2rem; }
+  .palete2Content {
+    display: none;
+    position: absolute;
+    width: 100px;
+    min-height: 100px;
+    z-index: 1;
+    background-color: #eee;
+    border: 2px solid #aaa;
+    border-radius: 3px;
+    font-size: 1.4rem; }
+    .palete2Content :not(:last-child) {
+      margin-bottom: 2px; }
+    .palete2ContentItem {
       width: 98%;
       margin: 0 auto;
       height: 2rem;
@@ -180,6 +202,9 @@ html {
   border-radius: 4px; }
 
 .example:hover .paleteContent {
+  display: block; }
+
+.example:hover .palete2Content {
   display: block; }
 
 .form {

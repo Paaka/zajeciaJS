@@ -24,3 +24,27 @@ const removeItemFromProperParent = isPinned =>{
         document.querySelector('#notes').removeChild(event.path[2]);
     } 
 }
+
+export const updateColorOfNote = event =>{
+    if(event.path[1].id == "colorsParents"){
+        const currentColor = setLocalStorageForColorAndReturnCurrentColor(event);
+        updateDOMNoteBackgroundColor(event, currentColor)
+    }
+}
+
+const setLocalStorageForColorAndReturnCurrentColor = event =>{
+    const value = event.path[0].id;
+    const keyOfCurrentItem =event.path[4].myKey;
+    const getItem = JSON.parse(localStorage.getItem(keyOfCurrentItem));
+    getItem.style = value;
+    localStorage.setItem(keyOfCurrentItem,JSON.stringify(getItem));
+    return value;
+}
+
+const updateDOMNoteBackgroundColor = (event, color) =>{
+    const noteIndexInPath = 4;
+    const currentAditionalStyle = 1;
+    const currentClass = event.path[noteIndexInPath].classList[currentAditionalStyle];
+    event.path[noteIndexInPath].classList.remove(currentClass);
+    event.path[noteIndexInPath].classList.add(color);
+}

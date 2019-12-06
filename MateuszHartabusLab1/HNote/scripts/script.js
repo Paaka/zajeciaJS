@@ -1,5 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem} from './eventFunctions.js';
+import {updateValue, deleteItem, updateColorOfNote} from './eventFunctions.js';
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -40,6 +40,16 @@ function appStart(){
                 .querySelector('#textArea')
                 .addEventListener('input', updateValue )
             })
+
+        document
+            .querySelectorAll('.notesItem')
+            .forEach(item => {
+               item
+                    .querySelector('.notesItemParagraph')
+                    .querySelector('.example')
+                    .querySelector('#colorsParents')
+                    .addEventListener('click',updateColorOfNote)
+                })
 
     const targetNode = document.getElementById('notes');
     const Pinned = document.getElementById('notesPinned');

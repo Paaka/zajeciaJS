@@ -79,7 +79,7 @@ class generateItemsInNote{
     CreateHtmlStructureForColorsParent(){
         const DIVnode = document.createElement("DIV");
         DIVnode.classList ="palete2Content";
-        DIVnode.id ="colorsParent";
+        DIVnode.id ="colorsParents";
         const white = this.CreateHtmlStructureForColorsParentItem("white");
         DIVnode.appendChild(white);
         const black = this.CreateHtmlStructureForColorsParentItem("dark");

@@ -83,6 +83,13 @@
   }
 }
 
+.pin2{
+  @extend .palete;
+  opacity: 0;
+  width: 2rem;
+  margin-left: 2rem;
+}
+
 .palete2{
   @extend .palete;
   width: 2rem;
@@ -132,9 +139,18 @@
 }
 .dark{
   border: 2px solid #333;
-  color:#eee;
   background-color: $darkNoteBg;
   border-radius:4px;
+  h2{
+    color: #eee;
+  }
+  textarea{
+    color: #eee;
+  }
+
+  .notesItemParagraph{
+    color: #eee;
+  }
 }
 .white{
   border: 2px solid $colorOfBorder;

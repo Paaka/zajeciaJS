@@ -43,7 +43,7 @@ html {
   gap: 1rem; }
   .notesItem, .notesItemRed {
     display: grid;
-    grid-template-rows: 25px 1fr 30px;
+    grid-template-rows: 30px 1fr 30px;
     width: 100%;
     height: 100%;
     margin: 1rem;
@@ -57,7 +57,6 @@ html {
       text-align: center;
       font-size: 1.8rem;
       color: #333;
-      padding-top: 5px;
       margin-bottom: 3px;
       font-weight: 700; }
     .notesItemPara {
@@ -72,11 +71,25 @@ html {
       .notesItemParagraphClosure {
         font-size: 3rem;
         cursor: pointer; }
+    .notesItemText {
+      color: #7d7d7d;
+      font-size: 16px;
+      border: none;
+      line-height: 22px;
+      width: 100%;
+      background: none;
+      resize: none;
+      min-height: 100px;
+      padding: 2rem; }
+      .notesItemText:focus {
+        outline: none; }
     .notesItemRed {
       background-color: red;
       border: 2px solid #ff6666; }
     .notesItem:hover .notesItemParagraph, .notesItemRed:hover .notesItemParagraph {
       display: flex; }
+    .notesItem:hover .pin2, .notesItemRed:hover .pin2 {
+      opacity: 1; }
 
 .nav {
   display: grid;
@@ -130,7 +143,7 @@ html {
   .pin:hover {
     opacity: 1; }
 
-.palete, .palete2 {
+.palete, .pin2, .palete2 {
   width: 3rem;
   grid-column: 2;
   grid-row: 4/4;
@@ -154,6 +167,11 @@ html {
       height: 2rem;
       text-align: center;
       cursor: pointer; }
+
+.pin2 {
+  opacity: 0;
+  width: 2rem;
+  margin-left: 2rem; }
 
 .palete2 {
   width: 2rem; }
@@ -193,9 +211,14 @@ html {
 
 .dark {
   border: 2px solid #333;
-  color: #eee;
   background-color: #3d3d3d;
   border-radius: 4px; }
+  .dark h2 {
+    color: #eee; }
+  .dark textarea {
+    color: #eee; }
+  .dark .notesItemParagraph {
+    color: #eee; }
 
 .white {
   border: 2px solid #aaa;

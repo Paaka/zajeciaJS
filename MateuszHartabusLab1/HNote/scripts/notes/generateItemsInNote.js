@@ -11,7 +11,7 @@ class generateItemsInNote{
     createForHtmlStructureNote(item, key){
         const DIVnode = document.createElement("DIV");
         const hover = this.createHtmlStructureForHover();
-        const title = this.createHtmlStructureForNoteTitle(item.title);
+        const title = this.createHtmlStructureForNoteTitle(item.title,item);
         const description = this.createHtmlStructureForNoteParagraph(item.description)
         DIVnode.appendChild(title);
         DIVnode.appendChild(description);
@@ -22,11 +22,25 @@ class generateItemsInNote{
         return DIVnode;
     }
 
-    createHtmlStructureForNoteTitle(title){
+    createHtmlStructureForNoteTitle(title, item){
         const h2Node = document.createElement("h2");
         const titleTextNode = document.createTextNode(title);
         h2Node.classList ="notesItemTitle";
         h2Node.appendChild(titleTextNode);
+        h2Node.appendChild(this.CreateHtmlStructureForPin(item.isPinned));
+        return h2Node;
+    }
+
+    CreateHtmlStructureForPin(item){
+        const h2Node = document.createElement("Img");
+        h2Node.classList ="pin2";
+        h2Node.id="pinNote"
+        if(item){
+            h2Node.src = "./resources/icons/pin-full.svg"
+        }else{
+            h2Node.src = "./resources/icons/pin-empty.svg"
+        }
+    
         return h2Node;
     }
 

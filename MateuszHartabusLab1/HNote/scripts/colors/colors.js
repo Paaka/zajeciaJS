@@ -61,7 +61,6 @@ class Colors {
         return "form " + additionalStyle;
     }
 
-
     setStateToDefault(){
         this.setAllItemsInStateOfColorsToFalse();
         colorsState[0].active = true;

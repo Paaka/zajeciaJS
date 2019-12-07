@@ -41,7 +41,7 @@ function appStart(){
                 .addEventListener('input', updateValue )
             })
 
-        document
+    document
             .querySelectorAll('.notesItem')
             .forEach(item => {
                item
@@ -50,6 +50,13 @@ function appStart(){
                     .querySelector('#colorsParents')
                     .addEventListener('click',updateColorOfNote)
                 })
+
+    document
+        .querySelectorAll('.notesItem')
+            .forEach(item => {
+                   console.log(item.querySelector('.notesItemTitle'))
+                    
+                    })
 
     const targetNode = document.getElementById('notes');
     const Pinned = document.getElementById('notesPinned');
@@ -66,6 +73,14 @@ function appStart(){
                 .querySelector('#textArea')
                 .addEventListener('input', updateValue)
             })
+            document.querySelectorAll('.notesItem')
+            .forEach(item => {
+               item
+                    .querySelector('.notesItemParagraph')
+                    .querySelector('.example')
+                    .querySelector('#colorsParents')
+                    .addEventListener('click',updateColorOfNote)
+                })
         }
         }
     };

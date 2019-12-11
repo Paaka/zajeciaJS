@@ -15,6 +15,7 @@
         font-weight: 600;
         border: 2px solid $colorOfBorder;
         border-radius: 1rem;
+        animation: showForm .2s ease-in;
     }
 
     &Input{
@@ -23,6 +24,7 @@
         width: 60%;
         border: 2px solid $colorOfBorder;
         border-radius: 5px;
+        animation: showForm .3s ease-in-out;
     }
 }
 
@@ -104,6 +106,7 @@
     border: 2px solid $colorOfBorder;
     border-radius: 3px;
     font-size: 1.4rem;
+    animation: show .4s ease-in;
    
     
     :not(:last-child){
@@ -167,6 +170,7 @@
     display: grid;
     grid-template-columns: 1fr 3rem 3rem 10rem;
     grid-template-rows: min-content max-content max-content 50px;
+    
 
     &Closure{
         color:#eee;

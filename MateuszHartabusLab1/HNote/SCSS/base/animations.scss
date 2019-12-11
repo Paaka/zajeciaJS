@@ -11,3 +11,15 @@
         transform: translateY(0);
     }
 }
+
+@keyframes showForm{
+    0%{
+        opacity: 0;
+        transform: scaleY(0);
+    
+    }
+    100%{
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}

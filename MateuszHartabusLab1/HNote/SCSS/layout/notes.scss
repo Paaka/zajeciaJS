@@ -8,10 +8,11 @@
 
     &Item{
         display: grid;
-        grid-template-rows: 30px 1fr 30px;
+        grid-template-rows: 30px 1fr 30px 1rem;
         width:100%;
         height: 100%;
         margin: 1rem;
+        padding-bottom: 2px;
         background-color: #eee;
         border: 2px solid $colorOfBorder;
         text-align: justify;
@@ -42,6 +43,10 @@
                 font-size: 3rem;
                 cursor: pointer;
             }
+        }
+        &Time{
+            grid-row: 4;
+            margin: 0 auto;
         }
 
         &Text{

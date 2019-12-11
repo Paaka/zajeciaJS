@@ -29,37 +29,24 @@ function appStart(){
         .querySelector('#pin')
         .addEventListener('click', (e)=>new Pin().togglePinState(e));
         
-    document.querySelectorAll('.notesItem').forEach(item => {
-        item.addEventListener('click', deleteItem);
-    })
-
-    document
-        .querySelectorAll('.notesItem')
-        .forEach(item => {
-            item
-                .querySelector('#textArea')
-                .addEventListener('input', updateValue )
-            })
-
     document
             .querySelectorAll('.notesItem')
             .forEach(item => {
                item
-                    .querySelector('.notesItemParagraph')
-                    .querySelector('.example')
                     .querySelector('#colorsParents')
-                    .addEventListener('click',updateColorOfNote)
+                    .addEventListener('click',updateColorOfNote);
+
+                item
+                    .querySelector('.pin2')
+                    .addEventListener('click', handlePinChange);
+
+                item
+                    .querySelector('#textArea')
+                    .addEventListener('input', updateValue )
+
+                item.addEventListener('click', deleteItem);
                 })
 
-    document
-        .querySelectorAll('.notesItem')
-            .forEach(item => {
-                   item
-                    .querySelector('.notesItemTitle')
-                    .querySelector('.pin2')
-                    .addEventListener('click', handlePinChange)
-                    
-                    })
 
     const targetNode = document.getElementById('notes');
     const Pinned = document.getElementById('notesPinned');
@@ -69,23 +56,22 @@ function appStart(){
         for(let mutation of mutationsList) {
             if (mutation.type === 'childList') {
             document.querySelectorAll('.notesItem').forEach(item => {
-                    item.addEventListener('click', deleteItem)
-                })
-            document.querySelectorAll('.notesItem').forEach(item => {
-                item
-                .querySelector('#textArea')
-                .addEventListener('input', updateValue)
-            })
-            document.querySelectorAll('.notesItem')
-            .forEach(item => {
-               item
-                    .querySelector('.notesItemParagraph')
-                    .querySelector('.example')
+                   item
                     .querySelector('#colorsParents')
-                    .addEventListener('click',updateColorOfNote)
-                })
+                    .addEventListener('click',updateColorOfNote);
+
+                item
+                    .querySelector('.pin2')
+                    .addEventListener('click', handlePinChange);
+
+                item
+                    .querySelector('#textArea')
+                    .addEventListener('input', updateValue )
+
+                item.addEventListener('click', deleteItem);
+        })
         }
-        }
+    } 
     };
 
     const observer = new MutationObserver(callback);

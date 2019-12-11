@@ -58,11 +58,13 @@ class Note{
         this.style = this.setNoteColor();
         this.isPinned = this.Pin.checkFormPinStateAndSetToDefault();
         this.Color.setStateToDefault();
+        this.time = getTime();
         return {
             title: this.title,
             description: this.des,
             style:this.style,
             isPinned: this.isPinned,
+            time: this.time,
         }
     }
 

@@ -13,13 +13,23 @@ class generateItemsInNote{
         const hover = this.createHtmlStructureForHover();
         const title = this.createHtmlStructureForNoteTitle(item.title,item);
         const description = this.createHtmlStructureForNoteParagraph(item.description)
+        const time = this.createHtmlStructureForNoteTime(item.time)
         DIVnode.appendChild(title);
         DIVnode.appendChild(description);
+        DIVnode.appendChild(time);
         DIVnode.appendChild(hover);
         DIVnode.classList =this.generateStyleOfNote(item);
         DIVnode.myKey = key;
         DIVnode.isPinned = item.isPinned;
         return DIVnode;
+    }
+    createHtmlStructureForNoteTime(time){
+        const pNode = document.createElement("p");     
+        const fullDescription = `Created ${time}`
+        const textNode = document.createTextNode(fullDescription);     
+        pNode.classList="notesItemTime"  
+        pNode.appendChild(textNode);
+        return pNode;
     }
 
     createHtmlStructureForNoteTitle(title, item){

@@ -17,6 +17,31 @@ export const deleteItem = event => {
     }
 }
 
+export const handlePinChange = event => {
+    if(event.path[0].id == "pinNote"){
+        const note = event.path[2];
+        const isPinnedOldValue = event.path[2].isPinned;
+        const newIsPinnedValue = !isPinnedOldValue;
+        event.path[2].isPinned = newIsPinnedValue;
+        const keyOfCurrentItem = event.path[2].myKey;
+        const getItem = JSON.parse(localStorage.getItem(keyOfCurrentItem));
+        getItem.isPinned = newIsPinnedValue;
+        localStorage.setItem(keyOfCurrentItem,JSON.stringify(getItem));  
+        removeItemFromProperParent(isPinnedOldValue);
+        addItemToProperParent(note, newIsPinnedValue);
+    }
+}
+
+const addItemToProperParent = (note, isPinned) =>{
+    if(isPinned){
+        document.querySelector('#notesPinned').appendChild(note);
+        note.querySelector('.pin2').src = "./resources/icons/pin-full.svg"
+    }else{
+        document.querySelector('#notes').appendChild(note);
+        note.querySelector('.pin2').src = "./resources/icons/pin-empty.svg"
+    } 
+}
+
 const removeItemFromProperParent = isPinned =>{
     if(isPinned){
         document.querySelector('#notesPinned').removeChild(event.path[2]);

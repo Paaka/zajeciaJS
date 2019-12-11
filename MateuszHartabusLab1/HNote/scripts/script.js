@@ -1,5 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem, updateColorOfNote} from './eventFunctions.js';
+import {updateValue, deleteItem, updateColorOfNote, handlePinChange} from './eventFunctions.js';
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -54,7 +54,10 @@ function appStart(){
     document
         .querySelectorAll('.notesItem')
             .forEach(item => {
-                   console.log(item.querySelector('.notesItemTitle'))
+                   item
+                    .querySelector('.notesItemTitle')
+                    .querySelector('.pin2')
+                    .addEventListener('click', handlePinChange)
                     
                     })
 

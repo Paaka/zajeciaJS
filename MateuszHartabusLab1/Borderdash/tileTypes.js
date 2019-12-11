@@ -2,22 +2,22 @@ const TileProperties = {
     empty: {
     type :'empty',
     spriteXPos:0,
-    spriteYPos:224,
+    spriteYPos:192,
     },
     sand: {
         type :'sand',
         spriteXPos:0,
-        spriteYPos:224,
+        spriteYPos:32,
         },
     diamond: {
         type :'diamond',
         spriteXPos:0,
-        spriteYPos:224,
+        spriteYPos:320,
         },
     wall :{
         type :'wall',
-        spriteXPos:0,
-        spriteYPos:224,
+        spriteXPos:96,
+        spriteYPos:192,
         },
     stone : {
         type :'stone',

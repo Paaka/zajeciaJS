@@ -41,7 +41,7 @@ export const updateColorOfNote = event =>{
 
 export const addTagToTheNote = event =>{
     if(event.path[0].id === 'tagIcon'){
-        console.log(event.path[0].isTagInputOpen);
+        activateOrDisactivateTagModal(event);
     }
 }
 
@@ -78,4 +78,22 @@ const updateDOMNoteBackgroundColor = (event, color) =>{
     const currentClass = event.path[noteIndexInPath].classList[currentAditionalStyle];
     event.path[noteIndexInPath].classList.remove(currentClass);
     event.path[noteIndexInPath].classList.add(color);
+}
+
+const activateOrDisactivateTagModal = (event) =>{
+    const iconHtmlTag = event.path[0];
+    let isTagModalOpen = iconHtmlTag.isTagInputOpen;
+    iconHtmlTag.isTagInputOpen = !isTagModalOpen;
+    isTagModalOpen = iconHtmlTag.isTagInputOpen;
+    toggleStyleIsTagInputOpen(isTagModalOpen);
+
+    
+}
+
+const toggleStyleIsTagInputOpen = (isOpen) =>{
+    if(isOpen){
+        document.querySelector('#tagModal').style.display = "block";
+    }else{
+        document.querySelector('#tagModal').style.display = "none";
+    }
 }

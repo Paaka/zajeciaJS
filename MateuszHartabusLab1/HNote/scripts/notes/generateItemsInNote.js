@@ -58,9 +58,11 @@ class generateItemsInNote{
         const hover = document.createElement("DIV");
         const signX = this.CreateHtmlStructureForClosure();
         const colorWrapper = this.CreateHtmlStructureForColorsWrapper();
+        const tag = this.CreateHtmlStructureForTagIcon();
         hover.classList ="notesItemParagraph";
         hover.appendChild(signX);
         hover.appendChild(colorWrapper);
+        hover.appendChild(tag);
         return hover;
     }
 
@@ -97,6 +99,15 @@ class generateItemsInNote{
         const h2Node = document.createElement("Img");
         h2Node.classList ="palete2";
         h2Node.src = "./resources/icons/painter-palette.svg"
+        return h2Node;
+    }
+
+    CreateHtmlStructureForTagIcon(){
+        const h2Node = document.createElement("Img");
+        h2Node.id = "tagIcon";
+        h2Node.classList ="tag";
+        h2Node.isTagInputOpen = false;
+        h2Node.src = "./resources/icons/edit.svg"
         return h2Node;
     }
 

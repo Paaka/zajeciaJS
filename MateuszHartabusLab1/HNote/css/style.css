@@ -157,7 +157,7 @@ html {
   .pin:hover {
     opacity: 1; }
 
-.palete, .pin2, .palete2 {
+.palete, .pin2, .palete2, .tag {
   width: 3rem;
   grid-column: 2;
   grid-row: 4/4;
@@ -182,12 +182,15 @@ html {
       text-align: center;
       cursor: pointer; }
 
+.tag {
+  cursor: pointer; }
+
 .pin2 {
   opacity: 0;
   width: 2rem;
   margin-left: 2rem; }
 
-.palete2 {
+.palete2, .tag {
   width: 2rem; }
   .palete2Content {
     display: none;
@@ -293,7 +296,8 @@ html {
   font-size: 16px; }
 
 .input,
-.textarea {
+.textarea,
+.textareaSecondary {
   color: #7d7d7d;
   font-size: 16px;
   border: none;
@@ -301,24 +305,40 @@ html {
   width: 100%;
   background: none; }
 
-.textarea {
+
+.textarea,
+.textareaSecondary {
   resize: none;
   min-height: 100px; }
 
+.textareaSecondary {
+  min-height: 2rem; }
+
 .input:focus,
-.textarea:focus {
+.textarea:focus,
+.textareaSecondary:focus {
   outline: none; }
 
 .input:focus + .label,
-.textarea:focus + .label {
+.textarea:focus + .label,
+.textareaSecondary:focus + .label {
   top: -22px;
   font-size: 13px; }
 
 .input:not(:placeholder-shown) + .label,
-.textarea:not(:placeholder-shown) + .label {
+.textarea:not(:placeholder-shown) + .label,
+.textareaSecondary:not(:placeholder-shown) + .label {
   top: -22px;
   font-size: 13px; }
 
 .input:focus ~ .formItemBar,
-.textarea:focus ~ .formItemBar {
+.textarea:focus ~ .formItemBar,
+.textareaSecondary:focus ~ .formItemBar {
   background: #1e58ff; }
+
+.tagWrapper {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+  margin-top: 2rem;
+  display: none; }

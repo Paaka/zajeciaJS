@@ -32,6 +32,19 @@ export const handlePinChange = event => {
     }
 }
 
+export const updateColorOfNote = event =>{
+    if(event.path[1].id == "colorsParents"){
+        const currentColor = setLocalStorageForColorAndReturnCurrentColor(event);
+        updateDOMNoteBackgroundColor(event, currentColor)
+    }
+}
+
+export const addTagToTheNote = event =>{
+    if(event.path[0].id === 'tagIcon'){
+        console.log(event.path[0].isTagInputOpen);
+    }
+}
+
 const addItemToProperParent = (note, isPinned) =>{
     if(isPinned){
         document.querySelector('#notesPinned').appendChild(note);
@@ -48,13 +61,6 @@ const removeItemFromProperParent = isPinned =>{
     }else{
         document.querySelector('#notes').removeChild(event.path[2]);
     } 
-}
-
-export const updateColorOfNote = event =>{
-    if(event.path[1].id == "colorsParents"){
-        const currentColor = setLocalStorageForColorAndReturnCurrentColor(event);
-        updateDOMNoteBackgroundColor(event, currentColor)
-    }
 }
 
 const setLocalStorageForColorAndReturnCurrentColor = event =>{

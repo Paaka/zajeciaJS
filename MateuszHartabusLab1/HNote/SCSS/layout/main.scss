@@ -85,6 +85,11 @@
   }
 }
 
+.tag{
+  @extend .palete2;
+  cursor: pointer;
+}
+
 .pin2{
   @extend .palete;
   opacity: 0;
@@ -243,6 +248,11 @@
   .textarea {
     resize: none;
     min-height: 100px;
+  }
+
+  .textareaSecondary{
+    @extend .textarea;
+    min-height: 2rem;
   }
   
   .input:focus,

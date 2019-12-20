@@ -1,5 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem, updateColorOfNote, handlePinChange} from './eventFunctions.js';
+import {updateValue, deleteItem, updateColorOfNote, handlePinChange,addTagToTheNote} from './eventFunctions.js';
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -45,6 +45,9 @@ function appStart(){
                     .addEventListener('input', updateValue )
 
                 item.addEventListener('click', deleteItem);
+
+                item.querySelector('#tagIcon')
+                .addEventListener('click',addTagToTheNote)
                 })
 
 
@@ -69,6 +72,9 @@ function appStart(){
                     .addEventListener('input', updateValue )
 
                 item.addEventListener('click', deleteItem);
+
+                item.querySelector('#tagIcon')
+                    .addEventListener('click',addTagToTheNote)
         })
         }
     } 
@@ -79,6 +85,38 @@ function appStart(){
     
     const observerForPinnedNotes = new MutationObserver(callback);
     observerForPinnedNotes.observe(Pinned, config);
+
+    
+
+    function notifyMe() {
+        if (!("Notification" in window)) {
+          alert("This browser does not support system notifications");
+        }
+        else if (Notification.permission === "granted") {
+          notify();
+        }
+        else if (Notification.permission !== 'denied') {
+          Notification.requestPermission(function (permission) {
+            if (permission === "granted") {
+              notify();
+            }
+          });
+        }
+        
+        function notify() {
+           
+          var notification = new Notification('TITLE OF NOTIFICATION', {
+            body: "Hey! You are on notice!",
+          });
+          console.log(notification);
+          notification.onclick = function () {
+            window.open("http://127.0.0.1:5500/MateuszHartabusLab1/HNote/index.html");      
+          };
+          setTimeout(notification.close.bind(notification), 7000); 
+        }
+      
+      }
+      notifyMe();
 }
 
 

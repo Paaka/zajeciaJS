@@ -135,7 +135,6 @@ class generateItemsInNote{
         const input = this.createTextInput();
         const btn = this.createSubmitButton();
         DIVnode.classList ="tagForm";
-        DIVnode.id ="tagForm";
         DIVnode.appendChild(input);
         DIVnode.appendChild(btn);
         return DIVnode;
@@ -143,7 +142,7 @@ class generateItemsInNote{
 
     createTextInput(){
         const input = document.createElement("input");
-        input.type = Text;
+        input.type = "text";
         input.classList ="tagFormInput";
         return input;
     }

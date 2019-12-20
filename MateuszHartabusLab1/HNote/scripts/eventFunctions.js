@@ -39,11 +39,19 @@ export const updateColorOfNote = event =>{
     }
 }
 
-export const openTagModal = event =>{
-    if(event.path[0].id === 'tagIcon'){
-        toggleDisplayInTagModal(event); 
+export const addTag = event =>{
+    event.preventDefault();
+    const currentBtnClass = event.path[0].classList[0];
+    const tagForm = event.path[1];
+    if(currentBtnClass ==="tagFormBtn"){
+        const inputValue = getValueFromInput(event);
+        const indexOfNote = 5;
+        const uniqueKey = event.path[indexOfNote].myKey;
+        const getItem = addInputValueToTag(uniqueKey, inputValue);
 
+        localStorage.setItem(uniqueKey,JSON.stringify(getItem));  
     }
+    tagForm.reset();
 }
 
 const addItemToProperParent = (note, isPinned) =>{
@@ -81,23 +89,21 @@ const updateDOMNoteBackgroundColor = (event, color) =>{
     event.path[noteIndexInPath].classList.add(color);
 }
 
-const toggleValueIsTagInputOpen = (event) =>{
-    const iconHtmlTag = event.path[0];
-    let isTagModalOpen = iconHtmlTag.isTagInputOpen;
-    iconHtmlTag.isTagInputOpen = !isTagModalOpen;
-    isTagModalOpen = iconHtmlTag.isTagInputOpen;
-    return isTagModalOpen;
+
+const getValueFromInput = event =>{
+    const tagForm = event.path[1];
+    const inputValue = tagForm.querySelector('.tagFormInput').value;
+    return inputValue;
 }
 
-const toggleDisplayInTagModal = (event) =>{
-    const isOpen = toggleValueIsTagInputOpen(event);
-    if(isOpen){
-        document.querySelector('#tagModal').style.display = "block";
-    }else{
-        document.querySelector('#tagModal').style.display = "none";
-    }
+const addInputValueToTag = (uniqueKey, inputValue) =>{
+    const getObj = JSON.parse(localStorage.getItem(uniqueKey));
+        if(getObj.hasOwnProperty("tag")){
+            getObj.tag += `${inputValue};`;
+        }else{
+            getObj.tag = `${inputValue};`;
+        }
+        console.log(getObj);
+    return getObj;
 }
 
-const getcurrentKey = (event) =>{
-
-}

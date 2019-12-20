@@ -32,8 +32,7 @@
   width: 30px;
   grid-column: 2/2;
   grid-row: 4/4;
- align-self: center;
-
+  align-self: center;
 }
 
 .pin{
@@ -88,6 +87,31 @@
 .tag{
   @extend .palete2;
   cursor: pointer;
+
+  &Content{
+    @extend .palete2Content;
+  }
+
+  &Form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &Input{
+      width: 9rem;
+      margin-top:2px;
+    }
+
+    &Btn{
+      width: 80%;
+      padding: 3px 0;
+      margin-bottom: 3px;
+      font-size: 10px;
+      color: white ;
+    }
+  }
+  
 }
 
 .pin2{
@@ -105,7 +129,7 @@
     display: none;
     position: absolute;
     width: 100px;
-    min-height: 100px;
+    min-height: 50px;
     z-index: 1;
     background-color: #eee;
     border: 2px solid $colorOfBorder;

@@ -58,11 +58,11 @@ class generateItemsInNote{
         const hover = document.createElement("DIV");
         const signX = this.CreateHtmlStructureForClosure();
         const colorWrapper = this.CreateHtmlStructureForColorsWrapper();
-        const tag = this.CreateHtmlStructureForTagIcon();
+        const tagWrapper = this.CreateHtmlStructureForTagFormWrapper()
         hover.classList ="notesItemParagraph";
         hover.appendChild(signX);
         hover.appendChild(colorWrapper);
-        hover.appendChild(tag);
+        hover.appendChild(tagWrapper);
         return hover;
     }
 
@@ -102,6 +102,16 @@ class generateItemsInNote{
         return h2Node;
     }
 
+    CreateHtmlStructureForTagFormWrapper(){
+        const DIVnode = document.createElement("DIV");
+        const imgNode = this.CreateHtmlStructureForTagIcon();
+        const formDiv = this.CreateHtmlStructureForTagFormDIV();
+        DIVnode.classList ="example";
+        DIVnode.appendChild(imgNode);
+        DIVnode.appendChild(formDiv);
+        return DIVnode;
+    }
+
     CreateHtmlStructureForTagIcon(){
         const h2Node = document.createElement("Img");
         h2Node.id = "tagIcon";
@@ -109,6 +119,42 @@ class generateItemsInNote{
         h2Node.isTagInputOpen = false;
         h2Node.src = "./resources/icons/edit.svg"
         return h2Node;
+    }
+
+    CreateHtmlStructureForTagFormDIV(){
+        const DIVnode = document.createElement("DIV");
+        const formDiv = this.CreateHtmlStructureForTagFormItems();
+        DIVnode.classList ="tagContent";
+        DIVnode.id ="tagFormParent";
+        DIVnode.appendChild(formDiv);
+        return DIVnode;
+    }
+
+    CreateHtmlStructureForTagFormItems(){
+        const DIVnode = document.createElement("form");
+        const input = this.createTextInput();
+        const btn = this.createSubmitButton();
+        DIVnode.classList ="tagForm";
+        DIVnode.id ="tagForm";
+        DIVnode.appendChild(input);
+        DIVnode.appendChild(btn);
+        return DIVnode;
+    }
+
+    createTextInput(){
+        const input = document.createElement("input");
+        input.type = Text;
+        input.classList ="tagFormInput";
+        return input;
+    }
+
+    createSubmitButton(){
+        const input = document.createElement("button");
+        input.type = "Submit";
+        input.classList ="tagFormBtn blue";
+        const textNode= document.createTextNode("Add Tag");
+        input.appendChild(textNode);
+        return input;
     }
 
     CreateHtmlStructureForColorsParent(){

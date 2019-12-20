@@ -1,5 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem, updateColorOfNote, handlePinChange,addTagToTheNote} from './eventFunctions.js';
+import {updateValue, deleteItem, updateColorOfNote, handlePinChange,openTagModal} from './eventFunctions.js';
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -37,7 +37,7 @@ function appStart(){
                     .addEventListener('click',updateColorOfNote);
 
                 item
-                    .querySelector('.pin2')
+                    .querySelector('#pinNote')
                     .addEventListener('click', handlePinChange);
 
                 item
@@ -47,7 +47,7 @@ function appStart(){
                 item.addEventListener('click', deleteItem);
 
                 item.querySelector('#tagIcon')
-                .addEventListener('click',addTagToTheNote)
+                .addEventListener('click',openTagModal)
                 })
 
 
@@ -64,7 +64,7 @@ function appStart(){
                     .addEventListener('click',updateColorOfNote);
 
                 item
-                    .querySelector('.pin2')
+                    .querySelector('#pinNote')
                     .addEventListener('click', handlePinChange);
 
                 item

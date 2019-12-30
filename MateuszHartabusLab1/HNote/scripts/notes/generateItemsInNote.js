@@ -12,10 +12,12 @@ class generateItemsInNote{
         const DIVnode = document.createElement("DIV");
         const hover = this.createHtmlStructureForHover();
         const title = this.createHtmlStructureForNoteTitle(item.title,item);
-        const description = this.createHtmlStructureForNoteParagraph(item.description)
-        const time = this.createHtmlStructureForNoteTime(item.time)
+        const description = this.createHtmlStructureForNoteParagraph(item.description);
+        const time = this.createHtmlStructureForNoteTime(item.time);
+        const tags = this.createHtmlStructureTagsItems(item.tags);
         DIVnode.appendChild(title);
         DIVnode.appendChild(description);
+        DIVnode.appendChild(tags);
         DIVnode.appendChild(time);
         DIVnode.appendChild(hover);
         DIVnode.classList =this.generateStyleOfNote(item);
@@ -66,6 +68,28 @@ class generateItemsInNote{
         return hover;
     }
 
+    createHtmlStructureTagsItems(arrayOfTags){
+    const tags = document.createElement("DIV");
+    tags.classList ="notesTags";
+        if(arrayOfTags === null || arrayOfTags === undefined) return tags;
+            arrayOfTags.forEach(element => {
+                if(element !== ""){ 
+                    const item = this.createSingleTag(element)
+                    tags.appendChild(item);
+                }
+            });
+        return tags;
+    }
+
+    createSingleTag(text){
+        const tag = document.createElement("DIV");
+        const titleTextNode = document.createTextNode(text);
+        tag.classList = "notesTagsItem"
+        const closure = this.TagX();
+        tag.appendChild(titleTextNode);
+        tag.appendChild(closure);
+        return tag;
+    }
     createHtmlStructureForNoteParagraph(description){
         const pNode = document.createElement("textarea");     
         pNode.value = description;
@@ -81,6 +105,14 @@ class generateItemsInNote{
         const titleTextNode = document.createTextNode("×");
         X.id = "Closure"
         X.classList ="notesItemParagraphClosure";
+        X.appendChild(titleTextNode);
+        return X;
+    }
+
+    TagX(){
+        const X = document.createElement("span");
+        const titleTextNode = document.createTextNode("×");
+        X.classList ="notesTagsX";
         X.appendChild(titleTextNode);
         return X;
     }

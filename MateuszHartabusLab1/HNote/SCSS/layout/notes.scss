@@ -8,7 +8,7 @@
 
     &Item{
         display: grid;
-        grid-template-rows: 30px 1fr 30px 1rem;
+        grid-template-rows: 30px 1fr 30px 30px 1rem;
         width:100%;
         height: 100%;
         margin: 1rem;
@@ -36,7 +36,7 @@
         }
 
         &Paragraph{
-            grid-row: 3;
+            grid-row: 4;
             display: none;
             align-self: flex-end;
             &Closure{
@@ -45,7 +45,7 @@
             }
         }
         &Time{
-            grid-row: 4;
+            grid-row: 5;
             margin: 0 auto;
         }
 
@@ -63,10 +63,6 @@
     outline: none;
   }
         }
-     
-
-        
-
         &Red{
             @extend .notesItem;
             background-color: red;
@@ -80,6 +76,34 @@
             opacity: 1;
           }
 
+    }
+
+    &Tags{
+        grid-row: 3;
+        margin: 0 auto;
+        max-width: 15rem;
+        margin-bottom: 2rem;
+        
+        &Item{
+            background-color: black;
+            opacity: 0.3;
+            color: white;
+            display: inline-block;
+            padding: 3px;
+            margin: 3px;
+            border-radius: 5px;
+
+            &:hover .notesTagsX{
+                visibility: visible;
+            }
+        }
+
+        &X{
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin-left: 3px;
+            visibility: hidden;
+        }
     }
 
    

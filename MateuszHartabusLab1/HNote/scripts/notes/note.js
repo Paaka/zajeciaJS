@@ -19,12 +19,15 @@ class Note{
         for(let i=0;i<localStorage.length;i++){
             const key =localStorage.key(i);
             const item = JSON.parse(localStorage.getItem(key));
+            item.tags = this.convertTagStringToArray(item.tag);
             this.createElementForHtml(item, key);
             this.key = key;
             this.title = item.title;
             this.des = item.description;
             this.style =item.style;
             this.isPinned = item.isPinned;
+            this.tags = this.convertTagStringToArray(item.tag);
+            
         }
     }
 
@@ -72,6 +75,14 @@ class Note{
         const length = localStorage.length;
         const random = Math.floor(Math.random()*1000);
         return `${length}${random}`
+    }
+
+    convertTagStringToArray(string){
+        if(string !== undefined){
+            const arrayOfsingleStrings =string.split(";");
+            return arrayOfsingleStrings;
+        }
+        return null;
     }
 }
 

@@ -1,3 +1,5 @@
+import Generator from './notes/generateItemsInNote.js';
+
 export const updateValue = event => {
     if(event.path[0].id == "textArea"){
         const value = event.path[0].value;
@@ -48,8 +50,9 @@ export const addTag = event =>{
         const indexOfNote = 5;
         const uniqueKey = event.path[indexOfNote].myKey;
         const getItem = addInputValueToTag(uniqueKey, inputValue);
-
-        localStorage.setItem(uniqueKey,JSON.stringify(getItem));  
+        localStorage.setItem(uniqueKey,JSON.stringify(getItem));
+        const tag = new Generator().createSingleTag(inputValue)
+        event.path[5].querySelector(".notesTags").appendChild(tag);
     }
     tagForm.reset();
 }
@@ -106,4 +109,41 @@ const addInputValueToTag = (uniqueKey, inputValue) =>{
         console.log(getObj);
     return getObj;
 }
+
+export const deleteTag = event =>{
+    if(event.path[0].className === "notesTagsX"){
+        const currentKey = event.path[3].myKey;
+        const tagValue = getTagTextValue(event);
+        const localStorageObject = JSON.parse(localStorage.getItem(currentKey));
+        const newValueOfTag = getUpdatedString(localStorageObject, tagValue);
+        localStorageObject.tag = newValueOfTag;
+        localStorage.setItem(currentKey, JSON.stringify(localStorageObject));
+        event.path[2].removeChild(event.path[1]);
+    }
+}
+
+const getTagTextValue= event =>{
+    const tagValueWithX = event.path[1].innerText;
+    const tagValue = tagValueWithX.slice(0,tagValueWithX.length -1);
+    return tagValue;
+}
+
+const getUpdatedString = (localStorageObject, tagValue) =>{
+    const arrayOfTags = getArrayOfTagsItems(localStorageObject);
+    arrayOfTags.forEach((tag, i) =>{
+        if(tag === tagValue){
+            arrayOfTags.splice( arrayOfTags.indexOf(tagValue), 1);
+        }
+    })
+    const allTagsJoined = arrayOfTags.join(";");
+    return allTagsJoined;
+}
+
+const getArrayOfTagsItems = localStorageObject =>{
+    const tagSting = localStorageObject.tag;
+    const arrayOfTags = tagSting.split(';');
+    return arrayOfTags;
+}
+
+
 

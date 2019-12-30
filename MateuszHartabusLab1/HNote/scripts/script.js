@@ -1,5 +1,5 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem, updateColorOfNote, handlePinChange,addTag} from './eventFunctions.js';
+import {updateValue, deleteItem, updateColorOfNote, handlePinChange,addTag, deleteTag} from './eventFunctions.js';
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -47,8 +47,17 @@ function appStart(){
                 item.addEventListener('click', deleteItem);
 
                 item.querySelector('.tagFormBtn')
-                    .addEventListener('click',addTag)
-                })
+                    .addEventListener('click',addTag);
+
+                if(item.querySelector('.notesTagsItem') !== null){
+                  item.querySelectorAll('.notesTagsItem').forEach(singleTag =>{
+                    singleTag.querySelector('.notesTagsX').addEventListener('click', deleteTag);
+                    })
+                  }
+               
+                }
+              )
+
 
 
     const targetNode = document.getElementById('notes');
@@ -72,6 +81,9 @@ function appStart(){
                     .addEventListener('input', updateValue )
 
                 item.addEventListener('click', deleteItem);
+
+                item.querySelector('.tagFormBtn')
+                    .addEventListener('click',addTag);
         })
         }
     } 

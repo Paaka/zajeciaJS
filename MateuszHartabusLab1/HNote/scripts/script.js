@@ -1,6 +1,6 @@
 import  {activateModal, disactivateModal} from './modal.js';
 import * as NoteFuctions from './eventFunctions.js';
-import {activateSearch} from './search.js'
+import Search from './search.js'
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -19,7 +19,7 @@ function appStart(){
 
     document
         .querySelector('#search')
-        .addEventListener('click',activateSearch)
+        .addEventListener('click',(e)=> new Search().activateSearch(e))
  
     //Note listeners
     document

@@ -1,5 +1,6 @@
 import  {activateModal, disactivateModal} from './modal.js';
-import {updateValue, deleteItem, updateColorOfNote, handlePinChange,addTag, deleteTag} from './eventFunctions.js';
+import * as NoteFuctions from './eventFunctions.js';
+import {activateSearch} from './search.js'
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
@@ -15,6 +16,10 @@ function appStart(){
     document
         .querySelector('#formClose')
         .addEventListener('click',disactivateModal)
+
+    document
+        .querySelector('#search')
+        .addEventListener('click',activateSearch)
  
     //Note listeners
     document
@@ -28,37 +33,40 @@ function appStart(){
     document
         .querySelector('#pin')
         .addEventListener('click', (e)=>new Pin().togglePinState(e));
+
+    const allEventsOnNotes = (item) =>{
+
+          item
+               .querySelector('#colorsParents')
+               .addEventListener('click', NoteFuctions.updateColorOfNote);
+    
+           item
+               .querySelector('#pinNote')
+               .addEventListener('click', NoteFuctions.handlePinChange);
+    
+           item
+               .querySelector('#textArea')
+               .addEventListener('input', NoteFuctions.updateValue )
+    
+           item.addEventListener('click', NoteFuctions.deleteItem);
+    
+           item.querySelector('.tagFormBtn')
+               .addEventListener('click',NoteFuctions.addTag);
+    
+           if(item.querySelector('.notesTagsItem') !== null){
+             item.querySelectorAll('.notesTagsItem').forEach(singleTag =>{
+               singleTag.querySelector('.notesTagsX').addEventListener('click',NoteFuctions.deleteTag);
+               })
+             }
+          
+           }
         
     document
             .querySelectorAll('.notesItem')
-            .forEach(item => {
-               item
-                    .querySelector('#colorsParents')
-                    .addEventListener('click',updateColorOfNote);
-
-                item
-                    .querySelector('#pinNote')
-                    .addEventListener('click', handlePinChange);
-
-                item
-                    .querySelector('#textArea')
-                    .addEventListener('input', updateValue )
-
-                item.addEventListener('click', deleteItem);
-
-                item.querySelector('.tagFormBtn')
-                    .addEventListener('click',addTag);
-
-                if(item.querySelector('.notesTagsItem') !== null){
-                  item.querySelectorAll('.notesTagsItem').forEach(singleTag =>{
-                    singleTag.querySelector('.notesTagsX').addEventListener('click', deleteTag);
-                    })
-                  }
-               
-                }
-              )
+            .forEach(item => allEventsOnNotes(item))
 
 
+    
 
     const targetNode = document.getElementById('notes');
     const Pinned = document.getElementById('notesPinned');
@@ -67,24 +75,7 @@ function appStart(){
     const callback = function(mutationsList) {
         for(let mutation of mutationsList) {
             if (mutation.type === 'childList') {
-            document.querySelectorAll('.notesItem').forEach(item => {
-                   item
-                    .querySelector('#colorsParents')
-                    .addEventListener('click',updateColorOfNote);
-
-                item
-                    .querySelector('#pinNote')
-                    .addEventListener('click', handlePinChange);
-
-                item
-                    .querySelector('#textArea')
-                    .addEventListener('input', updateValue )
-
-                item.addEventListener('click', deleteItem);
-
-                item.querySelector('.tagFormBtn')
-                    .addEventListener('click',addTag);
-        })
+            document.querySelectorAll('.notesItem').forEach(item => allEventsOnNotes(item));
         }
     } 
     };

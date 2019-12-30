@@ -11,9 +11,22 @@
 <body>
     <div class="nav">
         <h1>HNote</h1>
-        <button id="search">Search</button>
-        <button>View</button>
-        <button>Settings</button>
+        <div id="defaultNav">
+            <button id="search">Search</button>
+            <button>View</button>
+            <button>Settings</button>
+        </div>
+    <div id="searchDiv" class="searchDiv">
+            <form class="searchDivForm">
+                <div class="formItem hiddenform">
+                    <input id="seachInput" placeholder=" " class="input" type="text">
+                    <label class="label" for="seachInput">Search</label>
+                    <div class="formItemBar"></div>
+                </div>
+                <img class="searchDivIcon" src="./resources/icons/search.svg" alt="search">
+            </form>
+            <span class="searchX">&#10006;</span>
+    </div>
     </div>
     <div class="main">
         <div id="starterWrapper" class="mainStarter" >Create Note...</div>
@@ -49,6 +62,7 @@
     </div>
     <div id="notes" class="notes">
     </div>
+    <div id="searchNotes"></div>
     <script type="module" src="./scripts/script.js"></script>
 </body>
 </html>

@@ -1,9 +1,11 @@
 .nav{
     display: grid;
-    grid-template-columns: 1fr 10rem 10rem 10rem;
+    grid-template-columns: 20rem 1fr;
     padding: 2rem;
     border-bottom: 1px solid $colorOfBorder;
     border-top: 1px solid $colorOfBorder;
+    min-height: 90px;
+    max-height: 90px;
 
     button{
         display: inline-block;
@@ -13,4 +15,47 @@
         font-size: 3rem;
         color: $secondary;
     }
+
+}
+
+#defaultNav{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-self: flex-end;
+    align-self: center;
+}
+
+.searchDiv{
+    display: none;
+    justify-self: flex-start;
+    align-self: center;
+    grid-template-columns: 1fr 1px;
+    width: 90%;
+
+    &Icon{
+        width: 3rem;
+        height: 3rem;
+        align-self: center;
+    }
+
+    &Form{
+        display: grid;
+        grid-template-columns: 1fr 30px;
+        align-self: center;
+        margin-right: 20rem;
+    }
+
+    .hiddenForm{
+        justify-content: flex-start;
+        justify-items: flex-start;
+    }
+
+    
+}
+
+.searchX{
+    font-size: 2rem;
+    align-self: center;
+    justify-content: flex-end;
+    cursor: pointer;
 }

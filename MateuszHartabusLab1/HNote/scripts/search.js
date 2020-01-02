@@ -16,6 +16,7 @@ class Search{
         document.querySelector('.main').style.display = state;
         document.querySelector('#defaultNav').style.display = state;
         document.querySelector('#searchDiv').style.display = searchDivState;
+        document.querySelector('#searchNotes').style.display = searchDivState;
     }
 
     getAllNotes(){  
@@ -44,6 +45,7 @@ class Search{
         const value = e.target.value;
         this.clearSearchDiv();
         this.searchInDescrition(value);
+        this.searchInTitle(value);
     }
 
     searchInDescrition(value){
@@ -61,19 +63,32 @@ class Search{
         })
     }
 
-    searchInTitle(value){
-        this.notes.forEach(obj =>{
-            const postion = obj.title.search(value);
-            if(postion > -1){
-                const item = JSON.parse(localStorage.getItem(obj.key));
-                const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
-                if(value.length > 0){
-                    noteDiv.querySelector('.notesItemText').style.backgroundColor = 'yellow';
-                    noteDiv.querySelector('.notesItemText').style.color = 'black';
+    searchInTitle(valueFromInput){
+        this.notes.forEach((obj,i) =>{
+            const postion = obj.title.search(valueFromInput);
+            if(postion > -1){         
+            const listOfNotesDiv = document.querySelectorAll('#searchNotes');
+            const secondCondtion = this.checkIfThereIsNoteWithThisTitle(listOfNotesDiv, obj);
+                if(listOfNotesDiv.length >= 1 && secondCondtion){
+                    for(let i=0;i<listOfNotesDiv.length;i++){
+                        listOfNotesDiv[i].querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
+                        listOfNotesDiv[i].querySelector('.notesItemTitle').style.color = 'black';
+                    }
+                }else{
+                   this.createNoteAndPutItIntoSearchNotesDiv(obj, valueFromInput)
                 }
-              document.getElementById("searchNotes").appendChild(noteDiv);     
             }
         })
+    }
+
+    createNoteAndPutItIntoSearchNotesDiv(obj, value){
+        const item = JSON.parse(localStorage.getItem(obj.key));
+        const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
+        if(value.length > 0){
+            noteDiv.querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
+            noteDiv.querySelector('.notesItemTitle').style.color = 'black';
+        }
+      document.getElementById("searchNotes").appendChild(noteDiv);
     }
 
     clearSearchDiv(){
@@ -82,6 +97,11 @@ class Search{
         if(allNotes.length >= haveMinmumOneNote){
             document.querySelector('#searchNotes').innerHTML = ' ';
         }
+    }
+
+    checkIfThereIsNoteWithThisTitle(obj, xd){
+        const valueOfH2 = obj[0].querySelector('.notesItemTitle').textContent;
+        return xd.title === valueOfH2;
     }
     
 }

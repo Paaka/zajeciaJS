@@ -3,13 +3,37 @@ import Structure from './notes/generateItemsInNote.js';
 class Search{
     constructor(){
         this.notes=[];
-        this.getAllNotes()
+        this.getAllNotes();
+        this.activateSearchOptions();
     }
+
     activateSearch(){
         this.toggleDefaultInterface('none','grid');
         this.activeLocalListeners();
     }
-    
+
+    activateSearchOptions(){
+        this.activatePinnedItems();
+        
+    }
+
+    activatePinnedItems(){
+        const arrayOfNotes = this.getPinnedItems();
+        if(arrayOfNotes.length >= 1){
+            document.querySelector()
+        }
+    }
+
+    getPinnedItems(){
+        const pinnedItems =  [];
+        this.notes.forEach(note =>{
+            if(note.isPinned === true){
+                pinnedItems.push(note);
+            }
+        })
+        return pinnedItems;
+    }   
+     
     toggleDefaultInterface(state, searchDivState){
         document.querySelector('#notes').style.display = state;
         document.querySelector('#notesPinned').style.display = state;
@@ -27,7 +51,8 @@ class Search{
                             key: key,
                             description:item.description,
                             title: item.title,
-                            tags: item.tag
+                            tags: item.tag,
+                            isPinned:item.isPinned
                          }
             this.notes.push(note);
         }
@@ -69,6 +94,7 @@ class Search{
             if(postion > -1){         
             const listOfNotesDiv = document.querySelectorAll('#searchNotes');
             const secondCondtion = this.checkIfThereIsNoteWithThisTitle(listOfNotesDiv, obj);
+            console.log(secondCondtion);
                 if(listOfNotesDiv.length >= 1 && secondCondtion){
                     for(let i=0;i<listOfNotesDiv.length;i++){
                         listOfNotesDiv[i].querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
@@ -100,7 +126,12 @@ class Search{
     }
 
     checkIfThereIsNoteWithThisTitle(obj, xd){
-        const valueOfH2 = obj[0].querySelector('.notesItemTitle').textContent;
+        const lengthOfObj = obj.length;
+        let valueOfH2;
+        for(let i=0;i<lengthOfObj;i++){
+            valueOfH2 = obj[i].querySelector('.notesItemTitle').textContent;
+        }
+        
         return xd.title === valueOfH2;
     }
     

@@ -168,6 +168,18 @@ html {
   justify-content: flex-end;
   cursor: pointer; }
 
+.searchPinWrapper {
+  display: flex;
+  background-color: red;
+  width: 6rem;
+  height: 6rem;
+  display: inline-block;
+  justify-items: center;
+  align-items: center; }
+
+.searchPinImage {
+  width: 3.5rem; }
+
 .main {
   margin-top: 5rem;
   display: flex;

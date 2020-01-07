@@ -14,14 +14,27 @@ class Search{
 
     activateSearchOptions(){
         this.activatePinnedItems();
-        
+        // activate color
     }
 
     activatePinnedItems(){
         const arrayOfNotes = this.getPinnedItems();
+        const arrayOfUnpinnedNotes = this.getUnpinnedItems();
         if(arrayOfNotes.length >= 1){
-            document.querySelector()
+            document.querySelector('#searchOptions').style.display = "grid";
+            document.querySelector('#withPinImg').addEventListener('click',(e)=> this.genrateNotesFromArray(arrayOfNotes))
+            document.querySelector('#withoutPinImg').addEventListener('click',(e)=> this.genrateNotesFromArray(arrayOfUnpinnedNotes))
         }
+    }
+
+    genrateNotesFromArray(arrayOfNotes){
+        arrayOfNotes.forEach(note =>{
+            const item = JSON.parse(localStorage.getItem(note.key));
+            const noteDiv = new Structure().createForHtmlStructureNote(item, note.key);
+            document.getElementById("searchNotes").appendChild(noteDiv);  
+        })
+
+        document.querySelector('#searchOptions').style.display = "none";
     }
 
     getPinnedItems(){
@@ -32,7 +45,19 @@ class Search{
             }
         })
         return pinnedItems;
-    }   
+    }  
+
+    getUnpinnedItems(){
+        const pinnedItems =  [];
+        this.notes.forEach(note =>{
+            if(note.isPinned === false){
+                pinnedItems.push(note);
+            }
+        })
+        return pinnedItems;
+    }  
+    
+    
      
     toggleDefaultInterface(state, searchDivState){
         document.querySelector('#notes').style.display = state;
@@ -95,7 +120,7 @@ class Search{
             const listOfNotesDiv = document.querySelectorAll('#searchNotes');
             const secondCondtion = this.checkIfThereIsNoteWithThisTitle(listOfNotesDiv, obj);
             console.log(secondCondtion);
-                if(listOfNotesDiv.length >= 1 && secondCondtion){
+                if(listOfNotesDiv.length >= 1){
                     for(let i=0;i<listOfNotesDiv.length;i++){
                         listOfNotesDiv[i].querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
                         listOfNotesDiv[i].querySelector('.notesItemTitle').style.color = 'black';

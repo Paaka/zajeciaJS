@@ -168,17 +168,23 @@ html {
   justify-content: flex-end;
   cursor: pointer; }
 
+.searchWrapper {
+  display: none;
+  text-align: center;
+  margin-top: 2rem;
+  border-bottom: 1px solid #666; }
+
 .searchPinWrapper {
-  display: flex;
-  background-color: red;
-  width: 6rem;
-  height: 6rem;
-  display: inline-block;
-  justify-items: center;
-  align-items: center; }
+  display: inline-block; }
 
 .searchPinImage {
-  width: 3.5rem; }
+  box-sizing: content-box;
+  width: 3.5rem;
+  margin: 1rem auto;
+  margin-right: 2rem;
+  padding: 1rem;
+  border: 2px solid black;
+  border-radius: 50%; }
 
 .main {
   margin-top: 5rem;

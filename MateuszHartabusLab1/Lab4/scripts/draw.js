@@ -45,16 +45,7 @@ class Draw{
         this.drawShape(X,Y);       
     }
 
-    changeBackground(file){
-        const reader = new FileReader();
-        reader.onload = function () {
-            console.log(btoa(reader.result))
-            const image = new Image();
-            image.src = reader.result.split(',')[1];
-            this.ctx.drawImage(image, 0,0)
-        }
-        result.createObjectURL(file) 
-    }
+   
 
     chooseBrush(e){
         console.log(e.target.id)
@@ -65,9 +56,10 @@ class Draw{
     }
 
     chooseColor(e){
-        if(e.target.id === "colorFromInput"){
-             this.color = e.target.value;
-        }
+        console.log(e.target.id);
+        // if(e.target.id === "colorFromInput"){
+        //      this.color = e.target.value;
+        // }
         if(e.target !== e.currentTarget){ //btn różny od parenta
             this.color = e.target.value
         }

@@ -1,11 +1,12 @@
 import  {activateModal, disactivateModal} from './modal.js';
 import * as NoteFuctions from './eventFunctions.js';
-import Search from './search.js'
+import Search from './search/search.js'
 import Color from './colors/colors.js'
 import Note from './notes/note.js'
 import Pin from './pins/pin.js';
 document.addEventListener("DOMContentLoaded",appStart);
 
+console.log(Note);
 function appStart(){
     new Note().getNote();
 

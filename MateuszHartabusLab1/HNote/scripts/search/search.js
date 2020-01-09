@@ -1,4 +1,4 @@
-import Structure from './notes/generateItemsInNote.js';
+import Structure from '../notes/generateItemsInNote.js';
 
 class Search{
     constructor(){
@@ -13,6 +13,7 @@ class Search{
     }
 
     activateSearchOptions(){
+        this.clearSearchDiv();
         this.activatePinnedItems();
         // activate color
     }
@@ -22,8 +23,8 @@ class Search{
         const arrayOfUnpinnedNotes = this.getUnpinnedItems();
         if(arrayOfNotes.length >= 1){
             document.querySelector('#searchOptions').style.display = "grid";
-            document.querySelector('#withPinImg').addEventListener('click',(e)=> this.genrateNotesFromArray(arrayOfNotes))
-            document.querySelector('#withoutPinImg').addEventListener('click',(e)=> this.genrateNotesFromArray(arrayOfUnpinnedNotes))
+            document.querySelector('#withPinImg').addEventListener('click',()=> this.genrateNotesFromArray(arrayOfNotes))
+            document.querySelector('#withoutPinImg').addEventListener('click',()=> this.genrateNotesFromArray(arrayOfUnpinnedNotes))
         }
     }
 
@@ -56,9 +57,7 @@ class Search{
         })
         return pinnedItems;
     }  
-    
-    
-     
+       
     toggleDefaultInterface(state, searchDivState){
         document.querySelector('#notes').style.display = state;
         document.querySelector('#notesPinned').style.display = state;
@@ -93,9 +92,14 @@ class Search{
 
     searchValue(e){
         const value = e.target.value;
+        this.clearSearchOptions();
         this.clearSearchDiv();
         this.searchInDescrition(value);
         this.searchInTitle(value);
+    }
+
+   clearSearchOptions(){
+    document.querySelector('#searchOptions').style.display = 'none';
     }
 
     searchInDescrition(value){

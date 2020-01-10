@@ -1,10 +1,15 @@
 import Structure from '../notes/generateItemsInNote.js';
+import ColorSearch from './additonalSearch/colorSearch.js';
+import PinSearch from "./additonalSearch/pinSearch.js";
 
 class Search{
     constructor(){
         this.notes=[];
         this.getAllNotes();
         this.activateSearchOptions();
+        this.ColorSearch = new ColorSearch(this.notes);
+        this.ColorSearch.searchForColor();
+        this.PinSearch = new PinSearch(this.notes);
     }
 
     activateSearch(){
@@ -76,7 +81,8 @@ class Search{
                             description:item.description,
                             title: item.title,
                             tags: item.tag,
-                            isPinned:item.isPinned
+                            isPinned:item.isPinned,
+                            color: item.style
                          }
             this.notes.push(note);
         }
@@ -85,6 +91,8 @@ class Search{
     activeLocalListeners(){
         document.querySelector('.searchX').addEventListener('click',()=>{
             this.toggleDefaultInterface('grid','none');
+            this.ColorSearch.disactivateDOM();
+            this.PinSearch.disactivateDOM();
         })
     
         document.querySelector('#searchInput').addEventListener('input',(e)=>this.searchValue(e))

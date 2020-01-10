@@ -6,10 +6,10 @@ class Search{
     constructor(){
         this.notes=[];
         this.getAllNotes();
-        this.activateSearchOptions();
         this.ColorSearch = new ColorSearch(this.notes);
         this.ColorSearch.searchForColor();
         this.PinSearch = new PinSearch(this.notes);
+        this.PinSearch.activateDOM();
     }
 
     activateSearch(){
@@ -17,51 +17,7 @@ class Search{
         this.activeLocalListeners();
     }
 
-    activateSearchOptions(){
-        this.clearSearchDiv();
-        this.activatePinnedItems();
-        // activate color
-    }
-
-    activatePinnedItems(){
-        const arrayOfNotes = this.getPinnedItems();
-        const arrayOfUnpinnedNotes = this.getUnpinnedItems();
-        if(arrayOfNotes.length >= 1){
-            document.querySelector('#searchOptions').style.display = "grid";
-            document.querySelector('#withPinImg').addEventListener('click',()=> this.genrateNotesFromArray(arrayOfNotes))
-            document.querySelector('#withoutPinImg').addEventListener('click',()=> this.genrateNotesFromArray(arrayOfUnpinnedNotes))
-        }
-    }
-
-    genrateNotesFromArray(arrayOfNotes){
-        arrayOfNotes.forEach(note =>{
-            const item = JSON.parse(localStorage.getItem(note.key));
-            const noteDiv = new Structure().createForHtmlStructureNote(item, note.key);
-            document.getElementById("searchNotes").appendChild(noteDiv);  
-        })
-
-        document.querySelector('#searchOptions').style.display = "none";
-    }
-
-    getPinnedItems(){
-        const pinnedItems =  [];
-        this.notes.forEach(note =>{
-            if(note.isPinned === true){
-                pinnedItems.push(note);
-            }
-        })
-        return pinnedItems;
-    }  
-
-    getUnpinnedItems(){
-        const pinnedItems =  [];
-        this.notes.forEach(note =>{
-            if(note.isPinned === false){
-                pinnedItems.push(note);
-            }
-        })
-        return pinnedItems;
-    }  
+     
        
     toggleDefaultInterface(state, searchDivState){
         document.querySelector('#notes').style.display = state;

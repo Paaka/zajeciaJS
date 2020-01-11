@@ -36,7 +36,8 @@ class Search{
                             title: item.title,
                             tags: item.tag,
                             isPinned:item.isPinned,
-                            color: item.style
+                            color: item.style,
+                            tag:item.tagg
                          }
             this.notes.push(note);
         }
@@ -53,16 +54,25 @@ class Search{
 
     searchValue(e){
         const value = e.target.value;
-        const checked = this.checkWhichOneIsChecked();
-        this.hideAdditonalSearch();
-        this.clearSearchDiv();
-        this.chooseSearch(checked,value);
+        if(value.length > 0){
+            const checked = this.checkWhichOneIsChecked();
+            this.hideAdditonalSearch();
+            this.clearSearchDiv();
+            this.chooseSearch(checked,value);
+        }else{
+            document.querySelector('#searchNotes').innerHTML = ' ';
+        }
+        
         // this.searchInDescrition(value);
         
     }
 
     chooseSearch(item, value){
         switch(item){
+            case "everywhere":{
+                this.searchEverywhere(value);
+                break;
+            }
             case "titles":{
                 this.searchInTitle(value);
                 break;
@@ -76,6 +86,21 @@ class Search{
                 break;
             }
         }
+    }
+
+    searchEverywhere(inputValue){
+        this.notes.forEach((obj )=>{
+            const title = obj.title.search(inputValue);
+            const description = obj.description.search(inputValue);
+            const tag = this.getPostionFromTags(obj, inputValue);
+            if(title > -1 || description > -1 || tag > 0){
+                const item = JSON.parse(localStorage.getItem(obj.key));
+                item.tags = this.convertTagStringToArray(item.tag);
+                const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
+                document.getElementById("searchNotes").appendChild(noteDiv);
+            }
+        })
+        
     }
 
     checkWhichOneIsChecked(){
@@ -142,17 +167,31 @@ class Search{
         })
     }
 
+    getPostionFromTags(obj, input){
+        const tag = this.getTagsFromNote(obj.tags);
+        let position = 0;
+        tag.forEach(item =>{
+             if(item.search(input) >=1){
+                position += item.search(input);
+             }
+        })
+        return position;
+    }
+
+    getTagsFromNote(item){
+       if(typeof(item) === "string"){
+            const array = [...item.split(';')];
+            return array;
+       }else return [];
+    }
+
     searchInArrayIfHaveThisValue(array, inputValue, note){
         array.forEach(item =>{
             const position = item.search(inputValue);
             if(position > -1){
                 const item = JSON.parse(localStorage.getItem(note.key));
                 const noteDiv = new Structure().createForHtmlStructureNote(item, note.key);
-                if(inputValue.length > 0){
-                    noteDiv.querySelector('.notesItemText').style.backgroundColor = 'yellow';
-                    noteDiv.querySelector('.notesItemText').style.color = 'black';
-                }
-              document.getElementById("searchNotes").appendChild(noteDiv);    
+                document.getElementById("searchNotes").appendChild(noteDiv);    
             }
             
         })
@@ -185,6 +224,14 @@ class Search{
         }
         
         return xd.title === valueOfH2;
+    }
+
+    convertTagStringToArray(string){
+        if(string !== undefined){
+            const arrayOfsingleStrings =string.split(";");
+            return arrayOfsingleStrings;
+        }
+        return null;
     }
 }
 

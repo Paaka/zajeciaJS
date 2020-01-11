@@ -71,13 +71,14 @@ class generateItemsInNote{
     createHtmlStructureTagsItems(arrayOfTags){
     const tags = document.createElement("DIV");
     tags.classList ="notesTags";
-        if(arrayOfTags === null || arrayOfTags === undefined) return tags;
-            arrayOfTags.forEach(element => {
-                if(element !== ""){ 
-                    const item = this.createSingleTag(element)
-                    tags.appendChild(item);
-                }
-            });
+    if(arrayOfTags === null || arrayOfTags === undefined) return tags;
+        arrayOfTags.forEach(element => {
+            if(element !== ""){ 
+                console.log(element);
+                const item = this.createSingleTag(element)
+                tags.appendChild(item);
+            }
+        });
         return tags;
     }
 

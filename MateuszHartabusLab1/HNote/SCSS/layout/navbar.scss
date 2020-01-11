@@ -5,7 +5,7 @@
     border-bottom: 1px solid $colorOfBorder;
     border-top: 1px solid $colorOfBorder;
     min-height: 90px;
-    max-height: 90px;
+    max-height: 30vh;
 
     button{
         display: inline-block;
@@ -31,16 +31,21 @@
     align-self: center;
     grid-template-columns: 1fr 1px;
     width: 90%;
+    
 
     &Icon{
         width: 3rem;
         height: 3rem;
-        align-self: center;
+        align-self: flex-end;
+        grid-row: 2;
+        grid-column: 2;
+        margin-top: 7rem;
     }
 
     &Form{
         display: grid;
         grid-template-columns: 1fr 30px;
+        grid-template-rows: 5rem 30px 5rem;
         align-self: center;
         margin-right: 20rem;
     }
@@ -50,6 +55,23 @@
         justify-items: flex-start;
     }
 
+    
+}
+
+.radio{
+    grid-row: 3;
+    text-align: center;
+    justify-self: center;
+    align-self: flex-start;
+
+    &Wrapper{
+        display: flex;
+        margin-top: 1rem;
+
+        &Item{
+            margin-left: 5px;
+        }
+    }
     
 }
 

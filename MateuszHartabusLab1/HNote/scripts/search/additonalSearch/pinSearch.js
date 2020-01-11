@@ -19,7 +19,6 @@ class PinSearch{
         })
     } 
      
-
     clearSearchDiv(){
         document.querySelector('#searchNotes').innerHTML = ' ';
     }

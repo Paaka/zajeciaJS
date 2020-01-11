@@ -15,9 +15,7 @@ class Search{
     activateSearch(){
         this.toggleDefaultInterface('none','grid');
         this.activeLocalListeners();
-    }
-
-     
+    }   
        
     toggleDefaultInterface(state, searchDivState){
         document.querySelector('#notes').style.display = state;
@@ -47,8 +45,7 @@ class Search{
     activeLocalListeners(){
         document.querySelector('.searchX').addEventListener('click',()=>{
             this.toggleDefaultInterface('grid','none');
-            this.ColorSearch.disactivateDOM();
-            this.PinSearch.disactivateDOM();
+            this.hideAdditonalSearch();
         })
     
         document.querySelector('#searchInput').addEventListener('input',(e)=>this.searchValue(e))
@@ -56,14 +53,51 @@ class Search{
 
     searchValue(e){
         const value = e.target.value;
-        this.clearSearchOptions();
+        const checked = this.checkWhichOneIsChecked();
+        this.hideAdditonalSearch();
         this.clearSearchDiv();
-        this.searchInDescrition(value);
-        this.searchInTitle(value);
+        this.chooseSearch(checked,value);
+        // this.searchInDescrition(value);
+        
     }
 
-   clearSearchOptions(){
-    document.querySelector('#searchOptions').style.display = 'none';
+    chooseSearch(item, value){
+        switch(item){
+            case "titles":{
+                this.searchInTitle(value);
+                break;
+            }
+            case "description":{
+                this.searchInDescrition(value);
+                break;
+            }
+            case "tags":{
+                this.searchInTags(value);
+                break;
+            }
+        }
+    }
+
+    checkWhichOneIsChecked(){
+        let checkedValue;
+        const arrayOfRadioInputs = [
+            {label : "everywhere", checked: document.querySelector('#searchEverywhere').checked},
+            {label : "titles", checked: document.querySelector('#searchTitleRadio').checked},
+            {label : "description", checked: document.querySelector('#searchDescriptionRadio').checked},
+            {label : "tags", checked: document.querySelector('#searchTagsRadio').checked},
+        ]
+        
+        arrayOfRadioInputs.forEach(obj =>{
+            if(obj.checked == true){
+                checkedValue = obj.label;
+            }
+        })
+        return checkedValue;
+    }
+
+   hideAdditonalSearch(){
+        this.ColorSearch.disactivateDOM();
+        this.PinSearch.disactivateDOM();
     }
 
     searchInDescrition(value){
@@ -86,9 +120,8 @@ class Search{
             const postion = obj.title.search(valueFromInput);
             if(postion > -1){         
             const listOfNotesDiv = document.querySelectorAll('#searchNotes');
-            const secondCondtion = this.checkIfThereIsNoteWithThisTitle(listOfNotesDiv, obj);
-            console.log(secondCondtion);
-                if(listOfNotesDiv.length >= 1){
+            console.log(listOfNotesDiv.length);
+                if(listOfNotesDiv.length > 1){
                     for(let i=0;i<listOfNotesDiv.length;i++){
                         listOfNotesDiv[i].querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
                         listOfNotesDiv[i].querySelector('.notesItemTitle').style.color = 'black';
@@ -100,7 +133,33 @@ class Search{
         })
     }
 
+    searchInTags(inputValue){
+        this.notes.forEach(note =>{
+           if(typeof(note.tags) === "string"){
+                const tagsArray = note.tags.split(";");
+                this.searchInArrayIfHaveThisValue(tagsArray,inputValue, note)
+           }
+        })
+    }
+
+    searchInArrayIfHaveThisValue(array, inputValue, note){
+        array.forEach(item =>{
+            const position = item.search(inputValue);
+            if(position > -1){
+                const item = JSON.parse(localStorage.getItem(note.key));
+                const noteDiv = new Structure().createForHtmlStructureNote(item, note.key);
+                if(inputValue.length > 0){
+                    noteDiv.querySelector('.notesItemText').style.backgroundColor = 'yellow';
+                    noteDiv.querySelector('.notesItemText').style.color = 'black';
+                }
+              document.getElementById("searchNotes").appendChild(noteDiv);    
+            }
+            
+        })
+    }
+
     createNoteAndPutItIntoSearchNotesDiv(obj, value){
+        console.log('createNoteAndIn')
         const item = JSON.parse(localStorage.getItem(obj.key));
         const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
         if(value.length > 0){
@@ -127,7 +186,6 @@ class Search{
         
         return xd.title === valueOfH2;
     }
-    
 }
 
 export default Search;

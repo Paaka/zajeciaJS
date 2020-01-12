@@ -44,12 +44,16 @@ class Search{
     }
 
     activeLocalListeners(){
-        document.querySelector('.searchX').addEventListener('click',()=>{
-            this.toggleDefaultInterface('grid','none');
-            this.hideAdditonalSearch();
-        })
-    
-        document.querySelector('#searchInput').addEventListener('input',(e)=>this.searchValue(e))
+        document
+            .querySelector('.searchX')
+            .addEventListener('click',()=>{
+                this.toggleDefaultInterface('grid','none');
+                this.hideAdditonalSearch();
+            })
+
+        document
+            .querySelector('#searchInput')
+            .addEventListener('input',(e)=>this.searchValue(e))
     }
 
     searchValue(e){
@@ -61,10 +65,7 @@ class Search{
             this.chooseSearch(checked,value);
         }else{
             document.querySelector('#searchNotes').innerHTML = ' ';
-        }
-        
-        // this.searchInDescrition(value);
-        
+        }       
     }
 
     chooseSearch(item, value){
@@ -74,11 +75,11 @@ class Search{
                 break;
             }
             case "titles":{
-                this.searchInTitle(value);
+                this.searchValueInNote(value,"title")
                 break;
             }
             case "description":{
-                this.searchInDescrition(value);
+                this.searchValueInNote(value,"description");
                 break;
             }
             case "tags":{
@@ -94,13 +95,9 @@ class Search{
             const description = obj.description.search(inputValue);
             const tag = this.getPostionFromTags(obj, inputValue);
             if(title > -1 || description > -1 || tag > 0){
-                const item = JSON.parse(localStorage.getItem(obj.key));
-                item.tags = this.convertTagStringToArray(item.tag);
-                const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
-                document.getElementById("searchNotes").appendChild(noteDiv);
+                this.createNote(obj);
             }
-        })
-        
+        })   
     }
 
     checkWhichOneIsChecked(){
@@ -120,58 +117,37 @@ class Search{
         return checkedValue;
     }
 
-   hideAdditonalSearch(){
+    hideAdditonalSearch(){
         this.ColorSearch.disactivateDOM();
         this.PinSearch.disactivateDOM();
     }
 
-    searchInDescrition(value){
+    searchValueInNote(value, type){
         this.notes.forEach(obj =>{
-            const postion = obj.description.search(value);
+            const postion = obj[type].search(value);
             if(postion > -1){
-                const item = JSON.parse(localStorage.getItem(obj.key));
-                const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
-                if(value.length > 0){
-                    noteDiv.querySelector('.notesItemText').style.backgroundColor = 'yellow';
-                    noteDiv.querySelector('.notesItemText').style.color = 'black';
-                }
-              document.getElementById("searchNotes").appendChild(noteDiv);     
-            }
-        })
-    }
-
-    searchInTitle(valueFromInput){
-        this.notes.forEach((obj,i) =>{
-            const postion = obj.title.search(valueFromInput);
-            if(postion > -1){         
-            const listOfNotesDiv = document.querySelectorAll('#searchNotes');
-            console.log(listOfNotesDiv.length);
-                if(listOfNotesDiv.length > 1){
-                    for(let i=0;i<listOfNotesDiv.length;i++){
-                        listOfNotesDiv[i].querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
-                        listOfNotesDiv[i].querySelector('.notesItemTitle').style.color = 'black';
-                    }
-                }else{
-                   this.createNoteAndPutItIntoSearchNotesDiv(obj, valueFromInput)
-                }
+                this.createNote(obj)   
             }
         })
     }
 
     searchInTags(inputValue){
         this.notes.forEach(note =>{
-           if(typeof(note.tags) === "string"){
-                const tagsArray = note.tags.split(";");
-                this.searchInArrayIfHaveThisValue(tagsArray,inputValue, note)
-           }
+            const position =this.getPostionFromTags(note, inputValue)
+            if(position > 0){         
+                this.createNote(note);
+            }
         })
     }
 
     getPostionFromTags(obj, input){
         const tag = this.getTagsFromNote(obj.tags);
-        let position = 0;
+        let position = 0; 
         tag.forEach(item =>{
-             if(item.search(input) >=1){
+             if(item.search(input) >=0){
+                 if(item.search(input) === 0){
+                     position++;
+                 }
                 position += item.search(input);
              }
         })
@@ -185,29 +161,6 @@ class Search{
        }else return [];
     }
 
-    searchInArrayIfHaveThisValue(array, inputValue, note){
-        array.forEach(item =>{
-            const position = item.search(inputValue);
-            if(position > -1){
-                const item = JSON.parse(localStorage.getItem(note.key));
-                const noteDiv = new Structure().createForHtmlStructureNote(item, note.key);
-                document.getElementById("searchNotes").appendChild(noteDiv);    
-            }
-            
-        })
-    }
-
-    createNoteAndPutItIntoSearchNotesDiv(obj, value){
-        console.log('createNoteAndIn')
-        const item = JSON.parse(localStorage.getItem(obj.key));
-        const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
-        if(value.length > 0){
-            noteDiv.querySelector('.notesItemTitle').style.backgroundColor = 'yellow';
-            noteDiv.querySelector('.notesItemTitle').style.color = 'black';
-        }
-      document.getElementById("searchNotes").appendChild(noteDiv);
-    }
-
     clearSearchDiv(){
         const allNotes = document.querySelectorAll('#searchNotes');
         const haveMinmumOneNote = 1;
@@ -216,22 +169,19 @@ class Search{
         }
     }
 
-    checkIfThereIsNoteWithThisTitle(obj, xd){
-        const lengthOfObj = obj.length;
-        let valueOfH2;
-        for(let i=0;i<lengthOfObj;i++){
-            valueOfH2 = obj[i].querySelector('.notesItemTitle').textContent;
-        }
-        
-        return xd.title === valueOfH2;
-    }
-
-    convertTagStringToArray(string){
+     convertTagStringToArray(string){
         if(string !== undefined){
             const arrayOfsingleStrings =string.split(";");
             return arrayOfsingleStrings;
         }
         return null;
+    }
+
+    createNote(obj){
+        const item = JSON.parse(localStorage.getItem(obj.key));
+        item.tags = this.convertTagStringToArray(item.tag);
+        const noteDiv = new Structure().createForHtmlStructureNote(item, obj.key);
+        document.getElementById("searchNotes").appendChild(noteDiv);
     }
 }
 

@@ -15,3 +15,7 @@
     background: green;
     border-radius: 100%;
   }
+
+#mainCanvas{
+  border: 1px solid black;
+}  
